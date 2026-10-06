@@ -10,5 +10,5 @@ Het verenigt de [[OM&S]] standaard voor het modelleren en uitwisselen van observ
 Zowel observaties vanuit waterstanden, stromingen, neerslag, grondwaterstanden en boeien (als tijdreeksen), als ecologische observaties vanuit visvangst, tellingen en laboratoria (als losse observaties) kunnen worden opgevraagd.
 Ook verwachtingen en ensembles kunnen worden uitgewisseld.
 
-V4 is momenteel nog work-in-progres.
+V4 is momenteel nog work-in-progres en wordt voorlopig in delen opgeleverd.
 

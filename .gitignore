@@ -1,0 +1,56 @@
+# OS files
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editor / IDE files
+.idea/
+.vscode/
+*.iml
+
+# Node / package managers
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# ReSpec / generated output
+out/
+dist/
+build/
+_site/
+public/
+.generated/
+generated/
+*.generated.html
+
+# Local development / environment
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+
+# Cache / temp files
+.cache/
+.tmp/
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Coverage / test output
+coverage/
+.nyc_output/
+
+# Misc
+*.bak
+*.swp
+*.swo
+*~

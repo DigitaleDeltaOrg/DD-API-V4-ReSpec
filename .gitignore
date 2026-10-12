@@ -54,3 +54,4 @@ coverage/
 *.swp
 *.swo
 *~
+/definitions/v3.0/

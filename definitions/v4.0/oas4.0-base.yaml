@@ -1,0 +1,1044 @@
+﻿openapi: 3.1.0
+info:
+  title: DD-API-V4 - Base schema
+  # Aanpassen
+  description: Digitale Delta API V4
+  license:
+    name: CC BY 4.0
+    url: https://creativecommons.org/licenses/by/4.0/
+  version: 4.0.0
+  x-logo:
+    # Eventueel uitbreiden met eigen tekst
+    url: /v4/DigitaleDelta.svg
+externalDocs:
+  description: Official documentation
+  url: https://digitaledeltaorg.github.io/DD-API-V4-ReSpec/
+
+# AANPASSEN: Voeg hier je eigen server URL's toe
+# servers:
+#   - url: https://api.example.com
+#     description: Production server
+#   - url: https://test-api.example.com
+#     description: Test server
+
+# OPTIONEEL TOEVOEGEN: Beveiligingsrequirements op API-niveau
+# Kies een van de onderstaande opties of combineer ze
+# security:
+#   - apiKey: []         # Voor API key authenticatie
+#   - bearerAuth: []     # Voor Bearer token (OAuth2/JWT)
+#   - oauth2: []         # Voor OAuth2 flows
+#   - mTls: []           # Voor mTLS authenticatie
+
+paths:
+  /v4/odata/observations:
+    description: Provides access to observations.
+    get:
+      tags:
+        - Observation
+      summary: Get entities from observations
+      description: Get the observation data of the Digitale Delta API.
+      operationId: observations.Observation.ListObservation
+      # OPTIONEEL: Beveiligingseisen per endpoint (overschrijft API-niveau security)
+      # security:
+      #   - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skiptoken'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          $ref: '#/components/responses/DigitaleDelta.ObservationCollectionResponse'
+        default:
+          $ref: '#/components/responses/error'
+
+  /v4/odata/parameters:
+    description: Provides access to domain tables/enties for possible items in parameters.
+    get:
+      tags:
+        - Reference
+      summary: Get entities from references
+      description: Get the reference data of the Digitale Delta API.
+      operationId: references.Reference.ListReference
+      # OPTIONEEL: Beveiligingseisen per endpoint (overschrijft API-niveau security)
+      # security:
+      #   - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skiptoken'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          $ref: '#/components/responses/DigitaleDelta.ParameterCollectionResponse'
+        default:
+          $ref: '#/components/responses/error'
+
+  /v4/odata/foi:
+    description: Provides access to information for features of interest. This incluses measurement objects and monitoring networks.
+    get:
+      tags:
+        - Reference
+      summary: Get entities from references
+      description: Get the reference data of the Digitale Delta API.
+      operationId: references.Reference.ListReference
+      # OPTIONEEL: Beveiligingseisen per endpoint (overschrijft API-niveau security)
+      # security:
+      #   - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skiptoken'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200':
+          $ref: '#/components/responses/DigitaleDelta.FoiCollectionResponse'
+        default:
+          $ref: '#/components/responses/error'
+
+  /v4/geo/measurementobject:
+    get:
+      tags:
+        - FeatureOfInterest
+      summary: Get list of measurement objects.
+      description: Get a list of measurement objects.
+      operationId: geo.MeasurementObject.GetList
+      responses:
+        '200':
+          description: Retrieved network feature
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          $ref: '#/components/responses/error'
+        default:
+          $ref: '#/components/responses/error'
+  
+  /v4/geo/measurementobject/{id}:
+    get:
+      tags:
+        - FeatureOfInterest
+      summary: Get measurement object by id
+      description: Get a single measurement object by its identifier.
+      operationId: geo.MeasurementObject.GetMeasurementObjectById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Unique identifier of the measurement object.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Retrieved network feature
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          $ref: '#/components/responses/error'
+        default:
+          $ref: '#/components/responses/error'
+  
+  # Dit endpoint is optioneel, maar verplicht wanneer Capabilities: Network is aangegeven.
+  /v4/geo/network:
+    get:
+      tags:
+        - Network
+      summary: Get list of monitoring networks.
+      description: Get a list of monitoring networks.
+      operationId: geo.MonitoringNetwork.GetList
+      responses:
+        '200':
+          description: Retrieved networks
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          $ref: '#/components/responses/error'
+        default:
+          $ref: '#/components/responses/error'
+  
+  # Dit endpoint is optioneel, maar verplicht wanneer Capabilities: Network is aangegeven. 
+  /v4/geo/network/{id}:
+    get:
+      tags:
+        - Network
+      summary: Get network by id
+      description: Get a single monitoring network by its identifier.
+      operationId: geo.Network.GetNetworkById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Unique identifier of the network.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Retrieved network feature
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          $ref: '#/components/responses/error'
+        default:
+          $ref: '#/components/responses/error'
+
+components:
+  # TOEVOEGEN/VERWIJDEREN: Kies één of meer beveiligingsschema's die passen bij je implementatie, indien nodig
+  securitySchemes:
+    # Optie 1: API Key - eenvoudig maar minder veilig
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key for authentication
+
+    # Optie 2: Bearer Token (JWT/OAuth2 access token)
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token authentication (JWT)
+
+    # Optie 3: OAuth2 - voor gedelegeerde autorisatie
+    oauth2:
+      type: oauth2
+      description: OAuth2 authentication
+      flows:
+        # Client Credentials flow (machine-to-machine)
+        clientCredentials:
+          tokenUrl: https://auth.example.com/oauth2/token
+          scopes:
+            read:observations: Read access to observations
+            read:references: Read access to references
+        # Authorization Code flow (user context)
+        # authorizationCode:
+        #   authorizationUrl: https://auth.example.com/oauth2/authorize
+        #   tokenUrl: https://auth.example.com/oauth2/token
+        #   scopes:
+        #     read:observations: Read access to observations
+        #     read:references: Read access to references
+
+    # Optie 4: mTLS
+    mTLS:
+      type: http
+      scheme: mutualTLS
+      description: Mutual TLS authentication
+
+    # Optie 5: OpenID Connect
+    openIdConnect:
+      type: openIdConnect
+      openIdConnectUrl: https://auth.example.com/.well-known/openid-configuration
+      description: OpenID Connect authentication
+
+  schemas:
+    DigitaleDelta.Parameter:
+      title: Parameter
+      type: object
+      description: A reference is an entity to which observations can refer.
+      properties:
+        id:
+          type: string
+          description: Unique ID of the reference.
+        type:
+          type: string
+          nullable: true
+          description: Type of the reference
+        organisation:
+          type: string
+          nullable: true
+          description: Organisation responsible for the reference
+        code:
+          type: string
+          description: Code of the reference
+        geometry:
+          $ref: '#/components/schemas/Edm.Geometry'
+        description:
+          type: string
+          description: Short description of the reference
+        details:
+          type: ...
+
+    DigitaleDelta.Foi:
+      title: Feature of Interest
+      description: Feature of Interest is scoped to the location in which sampling took place.
+      type: object
+      properties:
+        id:
+          type: string
+          description: Id of the Feature of Interest
+        code:
+          type: string
+          description: Code of the Feature of Interest
+        geometry:
+          $ref: '#/components/schemas/Edm.GeometryPoint'
+        description:
+          type: string
+          description: Description of the Feature of Interest
+        # Uitbreiden met eigen selectie van eigenschappen uit ReferenceDefinitions.csv
+
+    DigitaleDelta.Observation:
+      title: Observation
+      type: object
+      description: Defines an observation. The type of the observation defines how the results are expressed.
+      properties:
+        id:
+          type: string
+          description: Unique ID of the observation
+        type:
+          type: string
+          description: Type of the observation
+        resultTime:
+          type: string
+          format: date-time
+        phenomenonTime:
+          $ref: '#/components/schemas/DigitaleDelta.Tm_Period'
+        validTime:
+          $ref: '#/components/schemas/DigitaleDelta.Tm_Period'
+        parameter:
+          $ref: '#/components/schemas/DigitaleDelta.ParameterContainer'
+        metadata:
+          anyOf:
+            - $ref: '#/components/schemas/DigitaleDelta.MetadataContainer'
+            - type: object
+              nullable: true
+        relatedObservations:
+          type: array
+          items:
+            $ref: '#/components/schemas/DigitaleDelta.RelatedObservation'
+          x-ms-navigationProperty: true
+          description: Related observations
+        foi:
+          anyOf:
+            - $ref: '#/components/schemas/DigitaleDelta.Foi'
+            - type: object
+              nullable: true
+          x-ms-navigationProperty: true
+          description: Feature of Interest
+        result:
+          $ref: '#/components/schemas/DigitaleDelta.Result'
+        modifiedOn:
+          type: string
+          format: date-time
+
+    DigitaleDelta.RelatedObservation:
+      allOf:
+        - $ref: '#/components/schemas/DigitaleDelta.Observation'
+        - title: RelatedObservation
+          type: object
+          description: Defines a related observation
+          properties:
+            role:
+              type: string
+              nullable: true
+
+    DigitaleDelta.ParameterContainer:
+      title: ParameterContainer
+      type: object
+      description: Defines the quantifiable references related to the observation
+      properties:
+      # Uitbreiden met eigen selectie van eigenschappen uit semantic.csv groep Parameter
+    DigitaleDelta.MetadataContainer:
+      title: MetadataContainer
+      type: object
+      description: Non-quantifiable data
+      properties:
+      # Uitbreiden met eigen selectie van eigenschappen uit semantic.csv groep Metadata
+    
+    DigitaleDelta.Result:
+      title: Result
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique ID of the result
+        truth:
+          type: boolean
+          nullable: true
+          description: Truth observation. Can only result in true or false
+        count:
+          oneOf:
+            - type: integer
+              format: int64
+            - type: string
+          nullable: true
+          description: Count observation. No unit specified and the value can only be a integer value
+        measure:
+          anyOf:
+            - $ref: '#/components/schemas/DigitaleDelta.Measure'
+            - type: object
+              nullable: true
+          description: Result is expressed in a unit and a value
+        vocab:
+          anyOf:
+            - $ref: '#/components/schemas/DigitaleDelta.CategoryVerb'
+            - type: object
+              nullable: true
+          description: Result is expressed in a vocabulary
+        coverage:
+          anyOf:
+            - $ref: '#/components/schemas/Coverage'
+            - type: object
+              nullable: true
+          description: Result is expressed in a vocabulary
+
+    DigitaleDelta.Measure:
+      title: Measure
+      type: object
+      properties:
+        uom:
+          type: string
+          description: Unit of Measurement
+        value:
+          oneOf:
+            - type: number
+              format: decimal
+            - type: string
+          description: Measured value
+        limit:
+          type: string
+          description: Limit of the measured value
+        nameSpace:
+          type: string
+          description: NameSpace of the unit of the measured value
+
+    DigitaleDelta.CategoryVerb:
+      title: CategoryVerb
+      type: object
+      properties:
+        vocabulary:
+          type: string
+          description: Vocabulary
+        term:
+          type: string
+          description: Term within the vocabulary
+
+    Edm.Geometry:
+      oneOf:
+        - $ref: '#/components/schemas/Edm.GeometryPoint'
+        - $ref: '#/components/schemas/Edm.GeometryLineString'
+        - $ref: '#/components/schemas/Edm.GeometryPolygon'
+        - $ref: '#/components/schemas/Edm.GeometryMultiPoint'
+        - $ref: '#/components/schemas/Edm.GeometryMultiLineString'
+        - $ref: '#/components/schemas/Edm.GeometryMultiPolygon'
+        - $ref: '#/components/schemas/Edm.GeometryCollection'
+      discriminator:
+        propertyName: type
+
+    Edm.GeometryPoint:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - Point
+        coordinates:
+          type: array
+          items:
+            type: number
+          minItems: 2
+          maxItems: 2
+
+    Edm.GeometryLineString:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - LineString
+        coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+            minItems: 2
+          minItems: 2
+
+    Edm.GeometryPolygon:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - Polygon
+        coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: array
+              items:
+                type: number
+              minItems: 2
+            minItems: 4
+
+    Edm.GeometryMultiPoint:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - MultiPoint
+        coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+            minItems: 2
+
+    Edm.GeometryMultiLineString:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - MultiLineString
+        coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: array
+              items:
+                type: number
+              minItems: 2
+            minItems: 2
+
+    Edm.GeometryMultiPolygon:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - MultiPolygon
+        coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: array
+              items:
+                type: array
+                items:
+                  type: number
+                minItems: 2
+              minItems: 4
+
+    Edm.GeometryCollection:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - GeometryCollection
+        geometries:
+          type: array
+          items:
+            $ref: '#/components/schemas/Edm.Geometry'
+
+    DigitaleDelta.ODataErrors.ODataError:
+      required:
+        - error
+      type: object
+      description: Describes OData errors
+      properties:
+        error:
+          $ref: '#/components/schemas/DigitaleDelta.ODataErrors.MainError'
+
+    DigitaleDelta.ODataErrors.MainError:
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        target:
+          type: string
+          nullable: true
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/DigitaleDelta.ODataErrors.ErrorDetails'
+        innererror:
+          $ref: '#/components/schemas/DigitaleDelta.ODataErrors.InnerError'
+
+    DigitaleDelta.ODataErrors.ErrorDetails:
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        target:
+          type: string
+          nullable: true
+
+    DigitaleDelta.Tm_Period:
+      type: object
+      properties:
+        begin:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+
+    DigitaleDelta.ODataErrors.InnerError:
+      type: object
+      description: The structure of this object is service-specific
+
+    ODataCountResponse:
+      type: integer
+      format: int32
+    
+    DigitaleDelta.ParameterCollectionResponse:
+      title: Collection of References
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/BaseCollectionPaginationCountResponse'
+        - type: object
+          properties:
+            value:
+              type: array
+              items:
+                $ref: '#/components/schemas/DigitaleDelta.Parameter'
+    
+    DigitaleDelta.FoiCollectionResponse:
+      title: Collection of References
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/BaseCollectionPaginationCountResponse'
+        - type: object
+          properties:
+            value:
+              type: array
+              items:
+                $ref: '#/components/schemas/DigitaleDelta.Foi'
+
+    DigitaleDelta.ObservationCollectionResponse:
+      title: Collection of Observation
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/BaseCollectionPaginationCountResponse'
+        - type: object
+          properties:
+            value:
+              type: array
+              items:
+                $ref: '#/components/schemas/DigitaleDelta.Observation'
+
+    DigitaleDelta.RelatedObservationCollectionResponse:
+      title: Collection of RelatedObservation
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/BaseCollectionPaginationCountResponse'
+        - type: object
+          properties:
+            value:
+              type: array
+              items:
+                $ref: '#/components/schemas/DigitaleDelta.RelatedObservation'
+
+    BaseCollectionPaginationCountResponse:
+      title: Base collection pagination and count responses
+      type: object
+      properties:
+        '@odata.count':
+          type: integer
+          format: int64
+          nullable: true
+        '@odata.nextLink':
+          type: string
+          nullable: true
+          description: URL to retrieve the next page of results
+
+    Coverage:
+      type: object
+      required:
+        - type
+        - domain
+        - parameters
+        - ranges
+      properties:
+        type:
+          type: string
+          enum:
+            - Coverage
+        domain:
+          $ref: '#/components/schemas/Domain'
+        parameters:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Parameter'
+        ranges:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Range'
+
+    Domain:
+      type: object
+      required:
+        - type
+        - axes
+      properties:
+        type:
+          type: string
+          enum:
+            - Domain
+        axes:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Axis'
+        referencing:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reference'
+
+    Axis:
+      type: object
+      required:
+        - values
+      properties:
+        values:
+          type: array
+          items:
+            oneOf:
+              - type: number
+              - type: string
+        start:
+          type: number
+        stop:
+          type: number
+        num:
+          type: integer
+
+    Parameter:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+        observedProperty:
+          $ref: '#/components/schemas/ObservedProperty'
+        unit:
+          $ref: '#/components/schemas/Unit'
+        categoryEncoding:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+
+    ObservedProperty:
+      type: object
+      properties:
+        id:
+          type: string
+        label:
+          type: object
+          additionalProperties:
+            type: string
+        description:
+          type: object
+          additionalProperties:
+            type: string
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+
+    Category:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+        label:
+          type: object
+          additionalProperties:
+            type: string
+        description:
+          type: object
+          additionalProperties:
+            type: string
+
+    Unit:
+      type: object
+      properties:
+        id:
+          type: string
+        label:
+          type: object
+          additionalProperties:
+            type: string
+        symbol:
+          type: object
+          additionalProperties:
+            type: string
+
+    Range:
+      type: object
+      required:
+        - type
+        - values
+      properties:
+        type:
+          type: string
+          enum:
+            - NdArray
+        dataType:
+          type: string
+          enum:
+            - float
+            - integer
+            - string
+        values:
+          type: array
+          items:
+            oneOf:
+              - type: number
+              - type: string
+              - type: array
+        axisNames:
+          type: array
+          items:
+            type: string
+        shape:
+          type: array
+          items:
+            type: integer
+
+    Reference:
+      type: object
+      required:
+        - system
+      properties:
+        system:
+          type: string
+        components:
+          type: array
+          items:
+            type: string
+
+  responses:
+    error:
+      description: error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DigitaleDelta.ODataErrors.ODataError'
+
+    ODataCountResponse:
+      description: The count of the resource
+      headers:
+        Content-Crs:
+          $ref: '#/components/headers/Content-Crs'
+      content:
+        text/plain:
+          schema:
+            $ref: '#/components/schemas/ODataCountResponse'
+
+    DigitaleDelta.ObservationCollectionResponse:
+      description: Retrieved observation collection
+      headers:
+        Content-Crs:
+          $ref: '#/components/headers/Content-Crs'
+        API-Version:
+          $ref: '#/components/headers/API-Version'
+        API-Deprecation-Date:
+          $ref: '#/components/headers/API-Deprecation-Date'
+        API-End-of-Life-Date:
+          $ref: '#/components/headers/API-End-of-Life-Date'
+        API-Next-Release:
+          $ref: '#/components/headers/API-Next-Release'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DigitaleDelta.ObservationCollectionResponse'
+
+    DigitaleDelta.ParameterCollectionResponse:
+      description: Retrieved collection
+      headers:
+        Content-Crs:
+          $ref: '#/components/headers/Content-Crs'
+        API-Version:
+          $ref: '#/components/headers/API-Version'
+        API-Deprecation-Date:
+          $ref: '#/components/headers/API-Deprecation-Date'
+        API-End-of-Life-Date:
+          $ref: '#/components/headers/API-End-of-Life-Date'
+        API-Next-Release:
+          $ref: '#/components/headers/API-Next-Release'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DigitaleDelta.ParameterCollectionResponse'
+
+    DigitaleDelta.FoiCollectionResponse:
+      description: Retrieved Feature of Interest collection
+      headers:
+        Content-Crs:
+          $ref: '#/components/headers/Content-Crs'
+        API-Version:
+          $ref: '#/components/headers/API-Version'
+        API-Deprecation-Date:
+          $ref: '#/components/headers/API-Deprecation-Date'
+        API-End-of-Life-Date:
+          $ref: '#/components/headers/API-End-of-Life-Date'
+        API-Next-Release:
+          $ref: '#/components/headers/API-Next-Release'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DigitaleDelta.FoiCollectionResponse'
+
+    DigitaleDelta.RelatedObservationCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DigitaleDelta.RelatedObservationCollectionResponse'
+
+  parameters:
+    top:
+      name: $top
+      in: query
+      description: Show only the first n items
+      style: form
+      explode: false
+      schema:
+        minimum: 0
+        type: integer
+      examples:
+        simple:
+          value: 1
+
+    skiptoken:
+      name: $skiptoken
+      in: query
+      description: The skip token, used to retrieve the next page of data. Generated by the service.
+      schema:
+        type: string
+
+    select:
+      name: $select
+      in: query
+      description: Select the properties to return.
+      schema:
+        type: string
+
+    count:
+      name: $count
+      in: query
+      description: Include count of items
+      style: form
+      explode: false
+      schema:
+        type: boolean
+
+    filter:
+      name: $filter
+      in: query
+      description: Filter items by property values
+      style: form
+      explode: false
+      schema:
+        type: string
+
+    bbox:
+      name: $bbox
+      in: query
+      description: Select the bounding box to return.
+      schema:
+        type: string
+    
+  headers:
+    API-Version:
+      description: The version of the API.
+      required: true
+      schema:
+        type: string
+      examples:
+        simple:
+          value: 3.0.0
+
+    API-Deprecation-Date:
+      description: The date that the API will be deprecated.
+      required: true
+      schema:
+        type: string
+        format: date
+
+    API-End-of-Life-Date:
+      description: The date that the API will be end-of-life.
+      required: true
+      schema:
+        type: string
+        format: date
+
+    API-Next-Release:
+      description: Next release version of the API.
+      required: true
+      schema:
+        type: string
+
+    prefer:
+      description: Prefer header, i.e. for null-suppression
+      required: false
+      schema:
+        type: string
+
+    Accept-Crs:
+      description: The Coordinate Reference System (CRS) that the client prefers. 4258 is the default.
+      required: false
+      schema:
+        type: string
+
+    Content-Crs:
+      description: The Coordinate Reference System (CRS) response conforms to. 4258 is the default.
+      required: false
+      schema:
+        type: string
+
+    DD-V4-Semantics:
+      description: Semantics header, i.e. for null-suppression
+      required: true
+      schema:
+        type: string
+
+    DD-V4-ResultTypes:
+      description: Result types known to the server
+      required: false
+      schema:
+        type: string
+
+    DD-V4-Capabilities:
+      description: Additional capabilities of the server
+      required: false
+      schema:
+        type: string
+
+tags:
+  - name: Reference
+  - name: Parameter
+  - name: Observation
+  - name: Foi
+  - name: FeatureOfInterest

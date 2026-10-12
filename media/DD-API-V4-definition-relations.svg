@@ -1,0 +1,406 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="980" viewBox="0 0 1500 980" role="img" aria-labelledby="title desc">
+    <title id="title">DD API V4 definitie- en discovery-relaties</title>
+    <desc id="desc">Overzicht van de relatie tussen manifest, semantiek, profielen, regels, capabilities, headers en gegenereerde API-artefacten.</desc>
+
+    <defs>
+        <style>
+            .canvas {
+            fill: #f8fafc;
+            }
+
+            .title-main {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            fill: #111827;
+            }
+
+            .subtitle {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            fill: #4b5563;
+            }
+
+            .group-label {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            fill: #374151;
+            }
+
+            .box {
+            fill: #ffffff;
+            stroke: #1f4e79;
+            stroke-width: 2;
+            rx: 10;
+            ry: 10;
+            }
+
+            .box-manifest {
+            fill: #eef6ff;
+            stroke: #1f4e79;
+            stroke-width: 2;
+            rx: 10;
+            ry: 10;
+            }
+
+            .box-definition {
+            fill: #fff8e8;
+            stroke: #c27a00;
+            stroke-width: 2;
+            rx: 10;
+            ry: 10;
+            }
+
+            .box-generated {
+            fill: #f4f9f0;
+            stroke: #4b8b3b;
+            stroke-width: 2;
+            rx: 10;
+            ry: 10;
+            }
+
+            .box-header {
+            fill: #f5f3ff;
+            stroke: #6d5bd0;
+            stroke-width: 2;
+            rx: 10;
+            ry: 10;
+            }
+
+            .box-client {
+            fill: #fdf2f8;
+            stroke: #be477d;
+            stroke-width: 2;
+            rx: 10;
+            ry: 10;
+            }
+
+            .box-api {
+            fill: #ecfeff;
+            stroke: #0891b2;
+            stroke-width: 2;
+            rx: 10;
+            ry: 10;
+            }
+
+            .header-blue {
+            fill: #1f4e79;
+            }
+
+            .header-orange {
+            fill: #c27a00;
+            }
+
+            .header-green {
+            fill: #4b8b3b;
+            }
+
+            .header-purple {
+            fill: #6d5bd0;
+            }
+
+            .header-pink {
+            fill: #be477d;
+            }
+
+            .header-cyan {
+            fill: #0891b2;
+            }
+
+            .card-title {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            fill: #ffffff;
+            }
+
+            .text {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            fill: #1f2937;
+            }
+
+            .text-small {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12.5px;
+            fill: #374151;
+            }
+
+            .text-muted {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12.5px;
+            fill: #6b7280;
+            }
+
+            .line {
+            stroke: #4b5563;
+            stroke-width: 2;
+            fill: none;
+            }
+
+            .line-soft {
+            stroke: #9ca3af;
+            stroke-width: 2;
+            fill: none;
+            }
+
+            .line-dashed {
+            stroke: #6b7280;
+            stroke-width: 2;
+            stroke-dasharray: 7 5;
+            fill: none;
+            }
+
+            .line-purple {
+            stroke: #6d5bd0;
+            stroke-width: 2.2;
+            fill: none;
+            }
+
+            .line-green {
+            stroke: #4b8b3b;
+            stroke-width: 2.2;
+            fill: none;
+            }
+
+            .line-blue {
+            stroke: #1f4e79;
+            stroke-width: 2.2;
+            fill: none;
+            }
+
+            .swimlane {
+            fill: none;
+            stroke: #d1d5db;
+            stroke-width: 1.5;
+            stroke-dasharray: 6 6;
+            rx: 14;
+            ry: 14;
+            }
+
+            .marker {
+            fill: #4b5563;
+            }
+
+            .legend-box {
+            fill: #ffffff;
+            stroke: #d1d5db;
+            stroke-width: 1.5;
+            rx: 8;
+            ry: 8;
+            }
+        </style>
+
+        <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+            <path d="M 0 0 L 12 6 L 0 12 z" class="marker"/>
+        </marker>
+
+        <marker id="arrow-purple" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+            <path d="M 0 0 L 12 6 L 0 12 z" fill="#6d5bd0"/>
+        </marker>
+
+        <marker id="arrow-green" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+            <path d="M 0 0 L 12 6 L 0 12 z" fill="#4b8b3b"/>
+        </marker>
+
+        <marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+            <path d="M 0 0 L 12 6 L 0 12 z" fill="#1f4e79"/>
+        </marker>
+    </defs>
+
+    <rect class="canvas" x="0" y="0" width="1500" height="980"/>
+
+    <text class="title-main" x="45" y="45">DD API V4 — semantiek, manifest en gegenereerde API-artefacten</text>
+    <text class="subtitle" x="45" y="70">Relatie tussen definitiebestanden, discovery, headers, $metadata, OpenAPI en clients</text>
+
+    <!-- Swimlanes -->
+    <rect class="swimlane" x="35" y="105" width="425" height="790"/>
+    <text class="group-label" x="55" y="132">Definitiebron</text>
+
+    <rect class="swimlane" x="500" y="105" width="445" height="790"/>
+    <text class="group-label" x="520" y="132">Publicatie / generatie</text>
+
+    <rect class="swimlane" x="985" y="105" width="480" height="790"/>
+    <text class="group-label" x="1005" y="132">Gebruik door API en clients</text>
+
+    <!-- Manifest -->
+    <g id="manifest">
+        <rect class="box-manifest" x="85" y="165" width="325" height="165"/>
+        <path class="header-blue" d="M 95 165 H 400 A 10 10 0 0 1 410 175 V 210 H 85 V 175 A 10 10 0 0 1 95 165 Z"/>
+        <text class="card-title" x="105" y="193">manifest.json</text>
+
+        <text class="text-small" x="105" y="240">Beschrijft de API-aanbieding</text>
+        <text class="text-small" x="105" y="264">Dataset(s), endpoints en eigenaarschap</text>
+        <text class="text-small" x="105" y="288">Verwijst naar semantiekset</text>
+        <text class="text-small" x="105" y="312">Input voor landing page / discovery</text>
+    </g>
+
+    <!-- Definition folder -->
+    <g id="definition-folder">
+        <rect class="box-definition" x="85" y="390" width="325" height="260"/>
+        <path class="header-orange" d="M 95 390 H 400 A 10 10 0 0 1 410 400 V 435 H 85 V 400 A 10 10 0 0 1 95 390 Z"/>
+        <text class="card-title" x="105" y="418">definitions/&lt;domein&gt;/&lt;datum&gt;</text>
+
+        <text class="text-small" x="105" y="465">semantics.csv</text>
+        <text class="text-muted" x="130" y="487">Eigenschappen, namen, datatypes, beschrijving</text>
+
+        <text class="text-small" x="105" y="520">profiles.csv</text>
+        <text class="text-muted" x="130" y="542">Profielen voor gebruikscontexten</text>
+
+        <text class="text-small" x="105" y="575">rules.csv</text>
+        <text class="text-muted" x="130" y="597">Verplicht, toegestaan, verboden, combinaties</text>
+
+        <text class="text-small" x="105" y="630">capabilities.csv</text>
+        <text class="text-muted" x="130" y="650">Ondersteunde optionele functionaliteit</text>
+    </g>
+
+    <!-- Versioning note -->
+    <g id="versioning">
+        <rect class="box-definition" x="85" y="705" width="325" height="115"/>
+        <path class="header-orange" d="M 95 705 H 400 A 10 10 0 0 1 410 715 V 750 H 85 V 715 A 10 10 0 0 1 95 705 Z"/>
+        <text class="card-title" x="105" y="733">Semantiekversie</text>
+
+        <text class="text-small" x="105" y="780">Domein + referentiedatum</text>
+        <text class="text-muted" x="105" y="804">Bijvoorbeeld: water/20261101</text>
+    </g>
+
+    <!-- Definition set -->
+    <g id="definition-set">
+        <rect class="box-generated" x="560" y="210" width="325" height="150"/>
+        <path class="header-green" d="M 570 210 H 875 A 10 10 0 0 1 885 220 V 255 H 560 V 220 A 10 10 0 0 1 570 210 Z"/>
+        <text class="card-title" x="580" y="238">definition-set.json</text>
+
+        <text class="text-small" x="580" y="285">Machine-leesbare bundeling</text>
+        <text class="text-small" x="580" y="309">van semantiek, profielen, rules</text>
+        <text class="text-small" x="580" y="333">en capabilities</text>
+    </g>
+
+    <!-- Generated CSDL -->
+    <g id="metadata">
+        <rect class="box-generated" x="560" y="420" width="325" height="145"/>
+        <path class="header-green" d="M 570 420 H 875 A 10 10 0 0 1 885 430 V 465 H 560 V 430 A 10 10 0 0 1 570 420 Z"/>
+        <text class="card-title" x="580" y="448">/v4/odata/$metadata</text>
+
+        <text class="text-small" x="580" y="495">CSDL voor OData-model</text>
+        <text class="text-small" x="580" y="519">Bevat concrete properties</text>
+        <text class="text-small" x="580" y="543">voor gekozen semantiekset</text>
+    </g>
+
+    <!-- Generated OpenAPI -->
+    <g id="openapi">
+        <rect class="box-generated" x="560" y="625" width="325" height="145"/>
+        <path class="header-green" d="M 570 625 H 875 A 10 10 0 0 1 885 635 V 670 H 560 V 635 A 10 10 0 0 1 570 625 Z"/>
+        <text class="card-title" x="580" y="653">/v4/openapi.json</text>
+
+        <text class="text-small" x="580" y="700">OpenAPI 3.1 beschrijving</text>
+        <text class="text-small" x="580" y="724">Endpoint-documentatie</text>
+        <text class="text-small" x="580" y="748">Schema's afgestemd op semantiek</text>
+    </g>
+
+    <!-- Headers -->
+    <g id="headers">
+        <rect class="box-header" x="1040" y="150" width="370" height="250"/>
+        <path class="header-purple" d="M 1050 150 H 1400 A 10 10 0 0 1 1410 160 V 195 H 1040 V 160 A 10 10 0 0 1 1050 150 Z"/>
+        <text class="card-title" x="1060" y="178">Response headers</text>
+
+        <text class="text-small" x="1060" y="230">DD-V4-Semantics</text>
+        <text class="text-muted" x="1085" y="252">URL naar actieve semantiekset</text>
+
+        <text class="text-small" x="1060" y="285">DD-V4-ResultTypes</text>
+        <text class="text-muted" x="1085" y="307">Ondersteunde result-typen</text>
+
+        <text class="text-small" x="1060" y="340">DD-V4-Capabilities</text>
+        <text class="text-muted" x="1085" y="362">Optionele functionaliteit</text>
+
+        <text class="text-small" x="1060" y="385">DD-V4-Profiles</text>
+    </g>
+
+    <!-- API Implementation -->
+    <g id="api-implementation">
+        <rect class="box-api" x="1040" y="470" width="370" height="155"/>
+        <path class="header-cyan" d="M 1050 470 H 1400 A 10 10 0 0 1 1410 480 V 515 H 1040 V 480 A 10 10 0 0 1 1050 470 Z"/>
+        <text class="card-title" x="1060" y="498">DD API V4 implementatie</text>
+
+        <text class="text-small" x="1060" y="545">Publiceert responses volgens virtueel model</text>
+        <text class="text-small" x="1060" y="569">Gebruikt semantiek voor properties</text>
+        <text class="text-small" x="1060" y="593">Past profiles, rules en capabilities toe</text>
+    </g>
+
+    <!-- Client -->
+    <g id="client">
+        <rect class="box-client" x="1040" y="700" width="370" height="150"/>
+        <path class="header-pink" d="M 1050 700 H 1400 A 10 10 0 0 1 1410 710 V 745 H 1040 V 710 A 10 10 0 0 1 1050 700 Z"/>
+        <text class="card-title" x="1060" y="728">Client / generator / tooling</text>
+
+        <text class="text-small" x="1060" y="775">Leest headers en discovery</text>
+        <text class="text-small" x="1060" y="799">Controleert gebruikte semantiekset</text>
+        <text class="text-small" x="1060" y="823">Gebruikt $metadata en OpenAPI voor binding</text>
+    </g>
+
+    <!-- Landing page -->
+    <g id="landing-page">
+        <rect class="box-generated" x="560" y="815" width="325" height="75"/>
+        <path class="header-green" d="M 570 815 H 875 A 10 10 0 0 1 885 825 V 855 H 560 V 825 A 10 10 0 0 1 570 815 Z"/>
+        <text class="card-title" x="580" y="842">Landing page / discovery</text>
+        <text class="text-small" x="580" y="875">Mens-leesbare toegang tot manifest en API</text>
+    </g>
+
+    <!-- Arrows from definitions -->
+    <path class="line-green" d="M 410 515 C 470 515, 500 285, 560 285" marker-end="url(#arrow-green)"/>
+    <text class="text-muted" x="450" y="390">gebundeld als</text>
+
+    <path class="line-green" d="M 410 525 C 500 525, 500 495, 560 495" marker-end="url(#arrow-green)"/>
+    <text class="text-muted" x="445" y="500">genereert / vult</text>
+
+    <path class="line-green" d="M 410 555 C 500 555, 500 700, 560 700" marker-end="url(#arrow-green)"/>
+    <text class="text-muted" x="445" y="650">genereert / vult</text>
+
+    <path class="line-blue" d="M 410 245 C 485 245, 485 850, 560 850" marker-end="url(#arrow-blue)"/>
+    <text class="text-muted" x="438" y="835">voedt</text>
+
+    <!-- Versioning to definition folder -->
+    <path class="line-soft" d="M 247 705 L 247 650" marker-end="url(#arrow)"/>
+    <text class="text-muted" x="260" y="685">identificeert</text>
+
+    <!-- Definition set to headers / api -->
+    <path class="line-purple" d="M 885 285 C 955 285, 970 255, 1040 255" marker-end="url(#arrow-purple)"/>
+    <text class="text-muted" x="920" y="250">wordt bekendgemaakt via</text>
+
+    <path class="line" d="M 885 285 C 960 285, 965 545, 1040 545" marker-end="url(#arrow)"/>
+    <text class="text-muted" x="920" y="435">wordt toegepast door</text>
+
+    <!-- Metadata/OpenAPI to clients -->
+    <path class="line" d="M 885 495 C 960 495, 965 775, 1040 775" marker-end="url(#arrow)"/>
+    <text class="text-muted" x="908" y="620">$metadata</text>
+
+    <path class="line" d="M 885 700 C 955 700, 970 800, 1040 800" marker-end="url(#arrow)"/>
+    <text class="text-muted" x="910" y="750">OpenAPI</text>
+
+    <!-- Headers to clients -->
+    <path class="line-purple" d="M 1225 400 L 1225 700" marker-end="url(#arrow-purple)"/>
+    <text class="text-muted" x="1240" y="575">interpreteert</text>
+
+    <!-- API to client -->
+    <path class="line" d="M 1225 625 L 1225 700" marker-end="url(#arrow)"/>
+    <text class="text-muted" x="1240" y="665">responses</text>
+
+    <!-- Manifest to headers / client -->
+    <path class="line-blue" d="M 410 225 C 700 120, 900 145, 1040 200" marker-end="url(#arrow-blue)"/>
+    <text class="text-muted" x="705" y="130">verwijst naar semantiek / discovery</text>
+
+    <path class="line-blue" d="M 410 245 C 745 95, 1040 85, 1225 150" marker-end="url(#arrow-blue)"/>
+    <text class="text-muted" x="940" y="95">discovery-informatie</text>
+
+    <!-- Landing page to client -->
+    <path class="line-dashed" d="M 885 850 C 955 850, 970 835, 1040 825" marker-end="url(#arrow)"/>
+    <text class="text-muted" x="915" y="870">mens-leesbare discovery</text>
+
+    <!-- Header source notes -->
+    <g id="notes">
+        <rect class="legend-box" x="45" y="915" width="1410" height="45"/>
+        <text class="text-small" x="65" y="943">
+            Kern: de technische API-specificatie blijft stabiel; de actieve semantiekset bepaalt welke eigenschappen, profielen, rules en capabilities voor een implementatie gelden.
+        </text>
+    </g>
+</svg>

@@ -1,0 +1,391 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="980" viewBox="0 0 1500 980" role="img" aria-labelledby="title desc">
+    <title id="title">DD API V4 SVG style guide</title>
+    <desc id="desc">Herbruikbare stijl voor DD API V4 diagrammen.</desc>
+
+    <defs>
+        <style>
+            /*
+            * DD API V4 SVG diagram style guide
+            *
+            * Gebruik:
+            * - .canvas als achtergrond
+            * - .box-* voor kaarten
+            * - .header-* voor kaartkoppen
+            * - .line-* voor relaties
+            * - .title-main, .subtitle, .card-title, .text-* voor tekst
+            *
+            * Kleuren:
+            * - Blauw: kernmodel / manifest / hoofdconcept
+            * - Oranje: semantiek / definities
+            * - Groen: gegenereerde artefacten / resultaten
+            * - Paars: headers / protocolinformatie
+            * - Cyaan: API / implementatie
+            * - Roze: client / tooling
+            * - Grijs: ondersteunend / neutraal
+            */
+
+            .canvas {
+            fill: #f8fafc;
+            }
+
+            /* Typography */
+            .title-main {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            fill: #111827;
+            }
+
+            .subtitle {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            fill: #4b5563;
+            }
+
+            .group-label {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            fill: #374151;
+            }
+
+            .card-title {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            fill: #ffffff;
+            }
+
+            .text {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            fill: #1f2937;
+            }
+
+            .text-small {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12.5px;
+            fill: #374151;
+            }
+
+            .text-muted {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12.5px;
+            fill: #6b7280;
+            }
+
+            .required {
+            font-weight: 700;
+            }
+
+            .note {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            fill: #374151;
+            }
+
+            /* Generic boxes */
+            .box {
+            fill: #ffffff;
+            stroke: #1f4e79;
+            stroke-width: 2;
+            rx: 10;
+            ry: 10;
+            }
+
+            .box-soft {
+            fill: #f2f8fc;
+            stroke: #2b6f9f;
+            stroke-width: 2;
+            rx: 10;
+            ry: 10;
+            }
+
+            .box-neutral {
+            fill: #ffffff;
+            stroke: #d1d5db;
+            stroke-width: 1.5;
+            rx: 8;
+            ry: 8;
+            }
+
+            /* Semantic box roles */
+            .box-core,
+            .box-manifest {
+            fill: #eef6ff;
+            stroke: #1f4e79;
+            stroke-width: 2;
+            rx: 10;
+            ry: 10;
+            }
+
+            .box-definition,
+            .box-semantic {
+            fill: #fff8e8;
+            stroke: #c27a00;
+            stroke-width: 2;
+            rx: 10;
+            ry: 10;
+            }
+
+            .box-generated,
+            .box-result {
+            fill: #f4f9f0;
+            stroke: #4b8b3b;
+            stroke-width: 2;
+            rx: 10;
+            ry: 10;
+            }
+
+            .box-header {
+            fill: #f5f3ff;
+            stroke: #6d5bd0;
+            stroke-width: 2;
+            rx: 10;
+            ry: 10;
+            }
+
+            .box-api {
+            fill: #ecfeff;
+            stroke: #0891b2;
+            stroke-width: 2;
+            rx: 10;
+            ry: 10;
+            }
+
+            .box-client {
+            fill: #fdf2f8;
+            stroke: #be477d;
+            stroke-width: 2;
+            rx: 10;
+            ry: 10;
+            }
+
+            /* Headers */
+            .header-blue,
+            .header-core,
+            .header-manifest {
+            fill: #1f4e79;
+            }
+
+            .header-soft {
+            fill: #2b6f9f;
+            }
+
+            .header-orange,
+            .header-definition,
+            .header-semantic {
+            fill: #c27a00;
+            }
+
+            .header-green,
+            .header-generated,
+            .header-result {
+            fill: #4b8b3b;
+            }
+
+            .header-purple,
+            .header-protocol {
+            fill: #6d5bd0;
+            }
+
+            .header-cyan,
+            .header-api {
+            fill: #0891b2;
+            }
+
+            .header-pink,
+            .header-client {
+            fill: #be477d;
+            }
+
+            .header-neutral {
+            fill: #6b7280;
+            }
+
+            /* Lines */
+            .line {
+            stroke: #4b5563;
+            stroke-width: 2;
+            fill: none;
+            }
+
+            .line-soft {
+            stroke: #9ca3af;
+            stroke-width: 2;
+            fill: none;
+            }
+
+            .line-dashed {
+            stroke: #6b7280;
+            stroke-width: 2;
+            stroke-dasharray: 7 5;
+            fill: none;
+            }
+
+            .line-blue {
+            stroke: #1f4e79;
+            stroke-width: 2.2;
+            fill: none;
+            }
+
+            .line-orange {
+            stroke: #c27a00;
+            stroke-width: 2.2;
+            fill: none;
+            }
+
+            .line-green {
+            stroke: #4b8b3b;
+            stroke-width: 2.2;
+            fill: none;
+            }
+
+            .line-purple {
+            stroke: #6d5bd0;
+            stroke-width: 2.2;
+            fill: none;
+            }
+
+            .line-cyan {
+            stroke: #0891b2;
+            stroke-width: 2.2;
+            fill: none;
+            }
+
+            .line-pink {
+            stroke: #be477d;
+            stroke-width: 2.2;
+            fill: none;
+            }
+
+            .card-line {
+            stroke: #d1d5db;
+            stroke-width: 1;
+            }
+
+            /* Containers */
+            .swimlane {
+            fill: none;
+            stroke: #d1d5db;
+            stroke-width: 1.5;
+            stroke-dasharray: 6 6;
+            rx: 14;
+            ry: 14;
+            }
+
+            .legend-box {
+            fill: #ffffff;
+            stroke: #d1d5db;
+            stroke-width: 1.5;
+            rx: 8;
+            ry: 8;
+            }
+
+            /* Markers */
+            .marker {
+            fill: #4b5563;
+            }
+        </style>
+
+        <!-- Default arrow -->
+        <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+            <path d="M 0 0 L 12 6 L 0 12 z" class="marker"/>
+        </marker>
+
+        <!-- Colored arrows -->
+        <marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+            <path d="M 0 0 L 12 6 L 0 12 z" fill="#1f4e79"/>
+        </marker>
+
+        <marker id="arrow-orange" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+            <path d="M 0 0 L 12 6 L 0 12 z" fill="#c27a00"/>
+        </marker>
+
+        <marker id="arrow-green" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+            <path d="M 0 0 L 12 6 L 0 12 z" fill="#4b8b3b"/>
+        </marker>
+
+        <marker id="arrow-purple" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+            <path d="M 0 0 L 12 6 L 0 12 z" fill="#6d5bd0"/>
+        </marker>
+
+        <marker id="arrow-cyan" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+            <path d="M 0 0 L 12 6 L 0 12 z" fill="#0891b2"/>
+        </marker>
+
+        <marker id="arrow-pink" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+            <path d="M 0 0 L 12 6 L 0 12 z" fill="#be477d"/>
+        </marker>
+
+        <!-- Optional aggregation-style diamond -->
+        <marker id="diamond" markerWidth="14" markerHeight="14" refX="2" refY="7" orient="auto" markerUnits="strokeWidth">
+            <path d="M 2 7 L 7 2 L 12 7 L 7 12 z" fill="#ffffff" stroke="#4b5563" stroke-width="1.5"/>
+        </marker>
+    </defs>
+
+    <!-- Example canvas -->
+    <rect class="canvas" x="0" y="0" width="1500" height="980"/>
+
+    <text class="title-main" x="45" y="45">DD API V4 diagramtitel</text>
+    <text class="subtitle" x="45" y="70">Korte toelichting op het doel van het diagram</text>
+
+    <!-- Example swimlanes -->
+    <rect class="swimlane" x="45" y="110" width="430" height="690"/>
+    <text class="group-label" x="65" y="138">Bron / definitie</text>
+
+    <rect class="swimlane" x="535" y="110" width="430" height="690"/>
+    <text class="group-label" x="555" y="138">Verwerking / generatie</text>
+
+    <rect class="swimlane" x="1025" y="110" width="430" height="690"/>
+    <text class="group-label" x="1045" y="138">Gebruik</text>
+
+    <!-- Example cards -->
+    <g id="example-core-card">
+        <rect class="box-core" x="95" y="180" width="320" height="145"/>
+        <path class="header-core" d="M 105 180 H 405 A 10 10 0 0 1 415 190 V 225 H 95 V 190 A 10 10 0 0 1 105 180 Z"/>
+        <text class="card-title" x="115" y="208">Kernconcept</text>
+        <text class="text-small" x="115" y="255">Belangrijk hoofdobject of manifest</text>
+        <text class="text-muted" x="115" y="280">Gebruik blauw voor centrale concepten</text>
+    </g>
+
+    <g id="example-definition-card">
+        <rect class="box-definition" x="95" y="390" width="320" height="145"/>
+        <path class="header-definition" d="M 105 390 H 405 A 10 10 0 0 1 415 400 V 435 H 95 V 400 A 10 10 0 0 1 105 390 Z"/>
+        <text class="card-title" x="115" y="418">Definitie / semantiek</text>
+        <text class="text-small" x="115" y="465">semantics.csv, rules.csv, profiles.csv</text>
+        <text class="text-muted" x="115" y="490">Gebruik oranje voor definitiebronnen</text>
+    </g>
+
+    <g id="example-generated-card">
+        <rect class="box-generated" x="585" y="285" width="320" height="145"/>
+        <path class="header-generated" d="M 595 285 H 895 A 10 10 0 0 1 905 295 V 330 H 585 V 295 A 10 10 0 0 1 595 285 Z"/>
+        <text class="card-title" x="605" y="313">Gegenereerd artefact</text>
+        <text class="text-small" x="605" y="360">$metadata, OpenAPI, definition-set.json</text>
+        <text class="text-muted" x="605" y="385">Gebruik groen voor gegenereerde output</text>
+    </g>
+
+    <g id="example-client-card">
+        <rect class="box-client" x="1075" y="285" width="320" height="145"/>
+        <path class="header-client" d="M 1085 285 H 1385 A 10 10 0 0 1 1395 295 V 330 H 1075 V 295 A 10 10 0 0 1 1085 285 Z"/>
+        <text class="card-title" x="1095" y="313">Client / tooling</text>
+        <text class="text-small" x="1095" y="360">Leest headers, OpenAPI en $metadata</text>
+        <text class="text-muted" x="1095" y="385">Gebruik roze voor afnemers</text>
+    </g>
+
+    <!-- Example arrows -->
+    <path class="line-orange" d="M 415 462 C 500 462, 500 357, 585 357" marker-end="url(#arrow-orange)"/>
+    <text class="text-muted" x="445" y="395">voedt</text>
+
+    <path class="line-green" d="M 905 357 C 980 357, 995 357, 1075 357" marker-end="url(#arrow-green)"/>
+    <text class="text-muted" x="935" y="340">wordt gebruikt door</text>
+
+    <!-- Example legend -->
+    <g id="legend">
+        <rect class="legend-box" x="45" y="850" width="1410" height="80"/>
+        <text class="note" x="65" y="880">Legenda</text>
+        <text class="text-small" x="65" y="910">
+            Blauw = kernconcept, oranje = semantiek/definitie, groen = gegenereerd artefact, paars = headers/protocol, cyaan = API, roze = client/tooling.
+        </text>
+    </g>
+</svg>

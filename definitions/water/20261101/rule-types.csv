@@ -1,0 +1,9 @@
+Id,Description,Description_nl,UsesCondition,UsesTarget
+required,Property must be present,Eigenschap moet aanwezig zijn,false,true
+requiredWhen,Property must be present when condition is true,Eigenschap moet aanwezig zijn wanneer de conditie waar is,true,true
+allowedWhen,Property may only be present when condition is true,Eigenschap mag alleen aanwezig zijn wanneer de conditie waar is,true,true
+forbiddenWhen,Property must not be present when condition is true,Eigenschap mag niet aanwezig zijn wanneer de conditie waar is,true,true
+requires,If the source property is present then the target property must also be present,Als de broneigenschap aanwezig is moet de doeleigenschap ook aanwezig zijn,false,true
+exactlyOneOf,Exactly one of the target properties must be present,Precies één van de doeleigenschappen moet aanwezig zijn,false,true
+requiredWhenPresent,Property must be present when target property is present,Eigenschap moet aanwezig zijn wanneer de doeleigenschap aanwezig is,false,true
+forbiddenWhenPresent,Property must not be present when target property is present,Eigenschap mag niet aanwezig zijn wanneer de doeleigenschap aanwezig is,false,true

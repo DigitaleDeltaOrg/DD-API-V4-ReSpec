@@ -1,0 +1,8 @@
+Id,Description,Description_nl
+Ecology,Ecological observations,Ecologische metingen
+WaterQuality,Water quality observations,Waterkwaliteit
+WaterQuantity,Water quantity observations,Waterkwantiteit
+Observations,Observation (individual observations),Observatie (losse waarnemingen)
+Expectations,Forecast or expectation observations,Verwachtingen
+Ensembles,Ensemble observations,Ensembles
+TimeSeries,Time series,Tijdreeksen

@@ -1,0 +1,350 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="980" viewBox="0 0 1400 980" role="img" aria-labelledby="title desc">
+    <title id="title">DD API V4 Observation Model</title>
+    <desc id="desc">Illustratief datamodel voor Observation binnen DD API V4.</desc>
+
+    <defs>
+        <style>
+            .canvas {
+            fill: #f8fafc;
+            }
+
+            .box {
+            fill: #ffffff;
+            stroke: #1f4e79;
+            stroke-width: 2;
+            rx: 10;
+            ry: 10;
+            }
+
+            .box-soft {
+            fill: #f2f8fc;
+            stroke: #2b6f9f;
+            stroke-width: 2;
+            rx: 10;
+            ry: 10;
+            }
+
+            .box-semantic {
+            fill: #fff8e8;
+            stroke: #c27a00;
+            stroke-width: 2;
+            rx: 10;
+            ry: 10;
+            }
+
+            .box-result {
+            fill: #f4f9f0;
+            stroke: #4b8b3b;
+            stroke-width: 2;
+            rx: 10;
+            ry: 10;
+            }
+
+            .header {
+            fill: #1f4e79;
+            }
+
+            .header-soft {
+            fill: #2b6f9f;
+            }
+
+            .header-semantic {
+            fill: #c27a00;
+            }
+
+            .header-result {
+            fill: #4b8b3b;
+            }
+
+            .title {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            fill: #ffffff;
+            }
+
+            .text {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            fill: #1f2937;
+            }
+
+            .text-small {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            fill: #374151;
+            }
+
+            .text-muted {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            fill: #6b7280;
+            }
+
+            .required {
+            font-weight: 700;
+            }
+
+            .note {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            fill: #374151;
+            }
+
+            .caption {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            fill: #1f2937;
+            }
+
+            .subtitle {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            fill: #4b5563;
+            }
+
+            .line {
+            stroke: #4b5563;
+            stroke-width: 2;
+            fill: none;
+            }
+
+            .line-dashed {
+            stroke: #6b7280;
+            stroke-width: 2;
+            stroke-dasharray: 7 5;
+            fill: none;
+            }
+
+            .card-line {
+            stroke: #d1d5db;
+            stroke-width: 1;
+            }
+
+            .marker {
+            fill: #4b5563;
+            }
+        </style>
+
+        <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+            <path d="M 0 0 L 12 6 L 0 12 z" class="marker"/>
+        </marker>
+
+        <marker id="diamond" markerWidth="14" markerHeight="14" refX="2" refY="7" orient="auto" markerUnits="strokeWidth">
+            <path d="M 2 7 L 7 2 L 12 7 L 7 12 z" fill="#ffffff" stroke="#4b5563" stroke-width="1.5"/>
+        </marker>
+    </defs>
+
+    <rect class="canvas" x="0" y="0" width="1400" height="980"/>
+
+    <text class="caption" x="40" y="45">DD API V4 Observation Model</text>
+    <text class="subtitle" x="40" y="70">Virtueel technisch uitwisselingsmodel voor observaties</text>
+
+    <!-- Observation -->
+    <g id="observation">
+        <rect class="box" x="470" y="110" width="420" height="330"/>
+        <path class="header" d="M 480 110 H 880 A 10 10 0 0 1 890 120 V 155 H 470 V 120 A 10 10 0 0 1 480 110 Z"/>
+        <text class="title" x="490" y="138">Observation</text>
+
+        <line class="card-line" x1="470" y1="155" x2="890" y2="155"/>
+
+        <text class="text required" x="490" y="185">id</text>
+        <text class="text-muted" x="690" y="185">string</text>
+
+        <text class="text required" x="490" y="215">resultTime</text>
+        <text class="text-muted" x="690" y="215">string / ISO 8601 date-time</text>
+
+        <text class="text required" x="490" y="245">phenomenonTime</text>
+        <text class="text-muted" x="690" y="245">Tm_Period_Closed</text>
+
+        <text class="text" x="490" y="275">validTime</text>
+        <text class="text-muted" x="690" y="275">Tm_Period_OpenEnd</text>
+
+        <text class="text required" x="490" y="305">foi</text>
+        <text class="text-muted" x="690" y="305">FoI</text>
+
+        <text class="text required" x="490" y="335">parameter</text>
+        <text class="text-muted" x="690" y="335">SemanticPropertyBag("parameter/")</text>
+
+        <text class="text" x="490" y="365">metadata</text>
+        <text class="text-muted" x="690" y="365">SemanticPropertyBag("metadata/")</text>
+
+        <text class="text required" x="490" y="395">result</text>
+        <text class="text-muted" x="690" y="395">Result</text>
+
+        <text class="text required" x="490" y="425">modifiedOn</text>
+        <text class="text-muted" x="690" y="425">string / ISO 8601 date-time</text>
+    </g>
+
+    <!-- Tm Periods -->
+    <g id="tm-period-closed">
+        <rect class="box-soft" x="55" y="135" width="330" height="135"/>
+        <path class="header-soft" d="M 65 135 H 375 A 10 10 0 0 1 385 145 V 180 H 55 V 145 A 10 10 0 0 1 65 135 Z"/>
+        <text class="title" x="75" y="163">Tm_Period_Closed</text>
+
+        <text class="text required" x="75" y="210">begin</text>
+        <text class="text-muted" x="210" y="210">string / ISO 8601</text>
+
+        <text class="text required" x="75" y="240">end</text>
+        <text class="text-muted" x="210" y="240">string / ISO 8601</text>
+    </g>
+
+    <g id="tm-period-open">
+        <rect class="box-soft" x="55" y="310" width="330" height="135"/>
+        <path class="header-soft" d="M 65 310 H 375 A 10 10 0 0 1 385 320 V 355 H 55 V 320 A 10 10 0 0 1 65 310 Z"/>
+        <text class="title" x="75" y="338">Tm_Period_OpenEnd</text>
+
+        <text class="text required" x="75" y="385">begin</text>
+        <text class="text-muted" x="210" y="385">string / ISO 8601</text>
+
+        <text class="text" x="75" y="415">end</text>
+        <text class="text-muted" x="210" y="415">string / ISO 8601</text>
+    </g>
+
+    <!-- FoI -->
+    <g id="foi">
+        <rect class="box-soft" x="975" y="120" width="370" height="250"/>
+        <path class="header-soft" d="M 985 120 H 1335 A 10 10 0 0 1 1345 130 V 165 H 975 V 130 A 10 10 0 0 1 985 120 Z"/>
+        <text class="title" x="995" y="148">FoI</text>
+
+        <text class="text required" x="995" y="195">id</text>
+        <text class="text-muted" x="1165" y="195">string</text>
+
+        <text class="text required" x="995" y="225">code</text>
+        <text class="text-muted" x="1165" y="225">string</text>
+
+        <text class="text required" x="995" y="255">description</text>
+        <text class="text-muted" x="1165" y="255">string</text>
+
+        <text class="text required" x="995" y="285">geometry</text>
+        <text class="text-muted" x="1165" y="285">GeoJSON</text>
+
+        <text class="text" x="995" y="315">identities</text>
+        <text class="text-muted" x="1165" y="315">SemanticPropertyBag</text>
+
+        <text class="text" x="995" y="345">classifications</text>
+        <text class="text-muted" x="1165" y="345">SemanticPropertyBag</text>
+    </g>
+
+    <!-- SemanticPropertyBag -->
+    <g id="semantic-property-bag">
+        <rect class="box-semantic" x="975" y="430" width="370" height="205"/>
+        <path class="header-semantic" d="M 985 430 H 1335 A 10 10 0 0 1 1345 440 V 475 H 975 V 440 A 10 10 0 0 1 985 430 Z"/>
+        <text class="title" x="995" y="458">SemanticPropertyBag(group)</text>
+
+        <text class="text-small" x="995" y="505">Semantisch begrensde set eigenschappen</text>
+        <text class="text-small" x="995" y="530">Eigenschappen komen uit actieve semantiekset</text>
+        <text class="text-small" x="995" y="555">Grooup bepaalt toepasselijk deel</text>
+        <text class="text-small" x="995" y="580">Datatype volgt uit semantiekset</text>
+        <text class="text-small" x="995" y="605">Rules/profiles bepalen verplicht/toegestaan</text>
+    </g>
+
+    <!-- Result -->
+    <g id="result">
+        <rect class="box-result" x="470" y="555" width="420" height="245"/>
+        <path class="header-result" d="M 480 555 H 880 A 10 10 0 0 1 890 565 V 600 H 470 V 565 A 10 10 0 0 1 480 555 Z"/>
+        <text class="title" x="490" y="583">Result</text>
+
+        <text class="text required" x="490" y="630">id</text>
+        <text class="text-muted" x="650" y="630">string</text>
+
+        <text class="text" x="490" y="660">truth</text>
+        <text class="text-muted" x="650" y="660">boolean/string</text>
+
+        <text class="text" x="490" y="690">vocab</text>
+        <text class="text-muted" x="650" y="690">Vocab</text>
+
+        <text class="text" x="490" y="720">count</text>
+        <text class="text-muted" x="650" y="720">integer</text>
+
+        <text class="text" x="490" y="750">coverage</text>
+        <text class="text-muted" x="650" y="750">CoverageJSON</text>
+
+        <text class="text" x="490" y="780">measure</text>
+        <text class="text-muted" x="650" y="780">Measure</text>
+    </g>
+
+    <!-- Measure -->
+    <g id="measure">
+        <rect class="box-result" x="55" y="585" width="330" height="165"/>
+        <path class="header-result" d="M 65 585 H 375 A 10 10 0 0 1 385 595 V 630 H 55 V 595 A 10 10 0 0 1 65 585 Z"/>
+        <text class="title" x="75" y="613">Measure</text>
+
+        <text class="text required" x="75" y="660">unit</text>
+        <text class="text-muted" x="210" y="660">string</text>
+
+        <text class="text required" x="75" y="690">value</text>
+        <text class="text-muted" x="210" y="690">float/decimal</text>
+
+        <text class="text" x="75" y="720">namespace</text>
+        <text class="text-muted" x="210" y="720">string</text>
+
+        <text class="text" x="75" y="750">limitSymbol</text>
+        <text class="text-muted" x="210" y="750">string</text>
+    </g>
+
+    <!-- Vocab -->
+    <g id="vocab">
+        <rect class="box-result" x="55" y="790" width="330" height="135"/>
+        <path class="header-result" d="M 65 790 H 375 A 10 10 0 0 1 385 800 V 835 H 55 V 800 A 10 10 0 0 1 65 790 Z"/>
+        <text class="title" x="75" y="818">Vocab</text>
+
+        <text class="text required" x="75" y="865">vocabulary</text>
+        <text class="text-muted" x="210" y="865">string</text>
+
+        <text class="text required" x="75" y="895">term</text>
+        <text class="text-muted" x="210" y="895">string</text>
+
+        <text class="text" x="75" y="925">namespace</text>
+        <text class="text-muted" x="210" y="925">string</text>
+    </g>
+
+    <!-- CoverageJSON -->
+    <g id="coverage">
+        <rect class="box-result" x="975" y="705" width="370" height="95"/>
+        <path class="header-result" d="M 985 705 H 1335 A 10 10 0 0 1 1345 715 V 750 H 975 V 715 A 10 10 0 0 1 985 705 Z"/>
+        <text class="title" x="995" y="733">CoverageJSON</text>
+        <text class="text-small" x="995" y="775">Tijdreeksen, verwachtingen en coverages</text>
+    </g>
+
+    <!-- Relationships -->
+    <path class="line" d="M 470 245 C 430 245, 425 205, 385 205" marker-end="url(#arrow)"/>
+    <text class="text-muted" x="395" y="230">phenomenonTime</text>
+
+    <path class="line" d="M 470 275 C 430 275, 425 380, 385 380" marker-end="url(#arrow)"/>
+    <text class="text-muted" x="400" y="350">validTime</text>
+
+    <path class="line" d="M 890 305 C 920 305, 940 245, 975 245" marker-end="url(#arrow)"/>
+    <text class="text-muted" x="910" y="280">foi</text>
+
+    <path class="line" d="M 890 335 C 925 335, 935 500, 975 500" marker-end="url(#arrow)"/>
+    <text class="text-muted" x="910" y="430">parameter</text>
+
+    <path class="line" d="M 890 365 C 930 365, 940 560, 975 560" marker-end="url(#arrow)"/>
+    <text class="text-muted" x="910" y="535">metadata</text>
+
+    <path class="line" d="M 1160 370 L 1160 430" marker-end="url(#arrow)"/>
+    <text class="text-muted" x="1175" y="405">identifications / classifications</text>
+
+    <path class="line" d="M 680 440 L 680 555" marker-end="url(#arrow)"/>
+    <text class="text-muted" x="695" y="505">result</text>
+
+    <path class="line" d="M 470 780 C 430 780, 425 690, 385 690" marker-end="url(#arrow)"/>
+    <text class="text-muted" x="405" y="735">measure</text>
+
+    <path class="line" d="M 470 690 C 430 690, 425 855, 385 855" marker-end="url(#arrow)"/>
+    <text class="text-muted" x="405" y="820">vocab</text>
+
+    <path class="line" d="M 890 750 C 930 750, 935 750, 975 750" marker-end="url(#arrow)"/>
+    <text class="text-muted" x="910" y="735">coverage</text>
+
+    <!-- Legend -->
+    <g id="legend">
+        <rect x="470" y="845" width="420" height="85" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5" rx="8" ry="8"/>
+        <text class="note" x="490" y="875">Legenda</text>
+        <text class="text-small" x="490" y="902">
+            Vet = verplicht. SemanticPropertyBag = eigenschappen begrensd door semantiekset.
+        </text>
+    </g>
+</svg>

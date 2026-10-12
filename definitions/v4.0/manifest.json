@@ -1,0 +1,116 @@
+{
+	"manifestVersion": "1.0",
+	"service": {
+		"id": "nl.example.dd-api-v4",
+		"name": "Example DD API V4",
+		"description": "Example implementation of the Digitale Delta API V4.",
+		"provider": {
+			"name": "Example API Provider",
+			"identifier": "example-api-provider",
+			"url": "https://www.example.org"
+		},
+		"contactPoint": {
+			"name": "Example API Servicedesk",
+			"email": "servicedesk@example.org",
+			"url": "https://www.example.org/contact"
+		}
+	},
+	"api": {
+		"version": "4.0.0",
+		"baseUrl": "https://api.example.org/v4",
+		"documentationUrl": "https://api.example.org/v4/docs",
+		"openApiUrl": "https://api.example.org/v4/openapi.json",
+		"releaseDate": "2026-11-01",
+		"endOfLife": null
+	},
+	"dcat": {
+		"profile": "DCAT-AP-NL",
+		"version": "3.0",
+		"language": "nl",
+		"catalogUrl": "https://data.overheid.nl"
+	},
+	"dataOfferings": [
+		{
+			"id": "waterschap-a-waterquality",
+			"name": "Water quality observations - Waterschap A",
+			"description": "Waterkwaliteitsobservaties van Waterschap A, beschikbaar via DD API V4.",
+			"publisher": {
+				"name": "Example API Provider",
+				"identifier": "example-api-provider",
+				"url": "https://www.example.org"
+			},
+			"creator": {
+				"name": "Waterschap A",
+				"identifier": "waterschap-a",
+				"url": "https://www.waterschap-a.example"
+			},
+			"dataOwner": {
+				"name": "Waterschap A",
+				"identifier": "waterschap-a",
+				"url": "https://www.waterschap-a.example",
+				"organisationCode": "WTSA",
+				"organisationNamespace": "NL930"
+			},
+			"contactPoint": {
+				"name": "Datateam Waterschap A",
+				"email": "datateam@waterschap-a.example",
+				"url": "https://www.waterschap-a.example/contact"
+			},
+			"landingPage": "https://www.example.org/v4/index.html",
+			"license": "https://creativecommons.org/publicdomain/zero/1.0/",
+			"accessRights": "public",
+			"language": "nl",
+			"themes": ["water"],
+			"keywords": ["waterkwaliteit","observaties","metingen","DD API"],
+			"issued": "2026-11-01",
+			"modified": "2026-11-01",
+			"accrualPeriodicity": "continuous",
+			"semantics": [
+				{
+					"id": "water/20261101",
+					"url": "https://digitaledelta.org/definitions/water/20261101/semantics.csv",
+					"status": "current",
+					"profiles": ["WaterQuality","Ecology"],
+					"capabilities": ["Profiles","Geo"],
+					"resultTypes": ["Values","Series"]
+				}
+			],
+			"distributions": [
+				{
+					"id": "waterschap-a-waterquality-dd-api",
+					"title": "DD API V4 OData observations endpoint",
+					"description": "OData endpoint voor het bevragen van waterkwaliteitsobservaties.",
+					"accessUrl": "https://api.example.org/v4/odata/observations",
+					"mediaType": "application/json",
+					"format": "JSON",
+					"conformsTo": [
+						"https://digitaledelta.org/specification/dd-api/v4",
+						"https://digitaledelta.org/definitions/water/20261101/semantics.json"
+					]
+				}
+			],
+			"dataService": {
+				"id": "example-dd-api-v4-service",
+				"title": "Example DD API V4 service",
+				"endpointUrl": "https://api.example.org/v4",
+				"endpointDescription": "https://api.example.org/v4/openapi.json",
+				"servesDataset": [
+					"waterschap-a-waterquality"
+				],
+				"conformsTo": [
+					"https://digitaledelta.org/specification/dd-api/v4"
+				]
+			},
+			"coverage": {
+				"temporal": {
+					"start": "2015-01-01T00:00:00Z",
+					"end": null
+				},
+				"spatial": {
+					"crs": "EPSG:4326",
+					"bbox": [4.1,51.7,5.3,52.4]
+				}
+			}
+		}
+	]
+}

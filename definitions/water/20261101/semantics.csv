@@ -1,0 +1,140 @@
+Container,Id,ODataType,Description,Id_nl,Description_nl,Reference,Source,OMS_Standard,Required,Profiles
+Observation,id,Edm.String,The unique identifier of the observation,id,De unieke identificatie van een observatie,,OM&S,true,true,All
+Observation,type,Edm.String,The type of observation,type,Het type van de observatie,,OM&S,true,true,
+Observation,phenomenonTime/begin,Edm.DateTime,The time of the start of the observation,phenomenonTime/begin,Begintijd van de observatie,,OM&S,true,true,All
+Observation,phenomenonTime/end,Edm.DateTime,The time of the end of the observation,phenomenonTime/end,Eindtijd van de observatie,,OM&S,true,,All
+Observation,resultTime,Edm.DateTime,The time of the result,resultTime,De tijd van het resultaat,,OM&S,true,true,All
+Observation,validTime/begin,Edm.DateTime,The start of the period for which the observation is valid,validTime/begin,Begintijd voor de geldigheid van het resultaat.,,OM&S,true,,All
+Observation,validTime/end,Edm.DateTime,The end of the period for which the observation is valid,validTime/end,Eindtijd van de geldigheid van het resultaat,,OM&S,true,All
+Observation,modifiedOn,Edm.DateTime,The time of the last modification,modifiedOn,De tijd van de laatste wijziging,,,,true,All
+Parameter,parameter/observedParameter, Edm.String,The parameter of which the physical property is being observed/measured,parameter/geobserveerdeParameter,De parameter waarvan de fysieke eigenschap wordt geobserveerd/gemeten,,Aquo,,,All
+Parameter,parameter/quantity, Edm.String,The quantity of the geo-object or parameter that is being observed/measured,parameter/grootheid,De grootheid van het geoobject of de parameter dat wordt geobserveerd/gemeten,,Aquo,,,All
+Parameter,parameter/observationType, Edm.String,Description of observations based on what is observed wherein,parameter/waarnemingssoort,Beschrijving van waarnemingen gebaseerd op de vraagstelling wat waarin is waargenomen,,Aquo,,All
+Parameter,parameter/asbestosFraction,Edm.String,Specifies the asbestos fraction of the parameter,parameter/asbestfractie,Specificeert de asbestfractie van de parameter,,Aquo,,,WaterQuality|Ecology|Observations
+Parameter,parameter/waveFrequencyClass,Edm.String,Specifies the wave frequency class of the parameter,parameter/golffrequentieklasse,Specificeert de golffrequentieklasse van de parameter,,Aquo,,,WaterQuality|Ecology|Observations
+Parameter,parameter/waveLength,Edm.String,Specifies what wave length is used for the analysis of Extinction and Chlorophyl-a,parameter/golflengte,Specificeert welke golflengte gebruikt is bij de analyse van Extinctie en chlorofyl-a,,Aquo,,,All
+Parameter,parameter/hydrocarbonFraction,Edm.String,Specifies the hydrocarbon fraction of the parameter if chemical,parameter/koolwaterstoffractie,Specificeert de koolwaterstoffractie van de parameter 'chemische stof',,Aquo,,,WaterQuality|Ecology
+Parameter,parameter/grainSizeFraction,Edm.String,specifies the grain size fraction of the parameter,parameter/korrelgroottefractie,Specificeert de korrelgroottefractie van de parameter,,Aquo,,,WaterQuality|Ecology
+Parameter,parameter/horizontalReference,Edm.String,Specifies the horizontal reference relative to which the parameter was observed,parameter/horizontaleReferentie,Specificeert ten opzichte van welke horizontale referentie de parameter is geobserveerd,,Aquo,,,All
+Parameter,parameter/verticalReference,Edm.String,Specifies the vertical reference relative to which the parameter was observed,parameter/verticaleReferentie,Specificeert ten opzichte van welke verticale referentie de parameter is geobserveerd,,Aquo,,,All
+Parameter,parameter/parameterEquivalent,Edm.String,Specifies how the parameter should be expressed as an equivalent other parameter,parameter/parameterEquivalent,Specificeert hoe de parameter moet worden uitgedrukt in een gelijkwaardige andere parameter,,Aquo,,,All
+Parameter,parameter/parameterReference,Edm.String,Specifies how the result value should be interpreted relative to a reference,parameter/parameterreferentie,Specificeert hoe de waarde van het resultaat gezien moet worden ten opzichte van een referentie,,Aquo,,,All
+Parameter,parameter/analysisCharacteristic,Edm.String,Specifies which action was performed to enable the analysis of a parameter,parameter/analysekenmerk,Specificeert welke actie is uitgevoerd om de analyse uit te kunnen voeren op een parameter,,Aquo,,,All
+Parameter,parameter/leachFraction,Edm.String,Specifies the fraction of the parameter after the sample has undergone a leaching test,parameter/uitloogfractie,Specificeert de fractie aan van de parameter nadat het monster een uitloogproef heeft ondergaan,,Aquo,,,WaterQuality|Ecology
+Parameter,parameter/lifeStage,Edm.String,The life stage of the organism,parameter/levensstadium,Het levensstadium van het organisme,,Aquo,,,Ecology
+Parameter,parameter/lengthClass,Edm.String,The length class of the organism,parameter/lengteklasse,De lengteklasse van het organisme,,Aquo,,,Ecology
+Parameter,parameter/gender,Edm.String,The biological sex of the organism,parameter/geslacht,Het biologische geslacht van het organisme,,Aquo,,,Ecology
+Parameter,parameter/appearance,Edm.String,The appearance of the organism,parameter/verschijningsvorm,De verschijningsvorm van het organisme,,Aquo,,,Ecology
+Parameter,parameter/lifeForm,Edm.String,The life form of the organism,parameter/levensvorm,De levensvorm van het organisme,,Aquo,,,Ecology
+Parameter,parameter/behaviour,Edm.String,The behaviour of the organism,parameter/gedrag,De gedrag van het organisme,,Aquo,,,Ecology
+Parameter,parameter/observationCompartment,Edm.String,Observation compartment,parameter/observatiecompartiment,Observatie-compartiment,,Aquo,,,All
+Parameter,parameter/analysisCompartment,Edm.String,Analysis compartment,parameter/analysecompartiment,Analysecompartiment,,Aquo,,,Ecology|WaterQuality
+Parameter,parameter/primerTargetGen,Edm.String,Primer Target Gen,parameter/primerTargetGen,Primer Target Gen,,Aquo,,,Ecology
+Parameter,parameter/dataOwner,Edm.String,Code of the organisation that owns the data,parameter/dataEigenaar,Code van de bronhouderorganisatie,,Aquo,,,All
+Parameter,parameter/organisationNamespace,Edm.String,Namespace of the organisation that owns the data,parameter/organisatieNamespace,Namespace van de bronhouderorganisatie,,Aquo,,,All
+Parameter,parameter/measurementPackage,Edm.String,Measurement package,parameter/meetpakket,Meetpakket,,AquaDesk,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/measurementDevice,Edm.String,Measurement device,parameter/meetapparaat,Meetapparaat,,AquaDesk,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/analysisPackage,Edm.String,Analysis package,parameter/analysepakket,Analysepakket,,AquaDesk,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/condition,Edm.String,Condition of the sample,parameter/conditie,Conditie van het monster,,AquaDesk,,,Ecology
+Parameter,parameter/recordingMethod,Edm.String,Recording method,parameter/opnamemethode,Opnamemethode,,AquaDesk,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/purpose,Edm.String,(Monitoring)Purpose,parameter/doel,(Meet-)doel,,Aquo,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/sizeClass,Edm.String,Size class,parameter/lengteklasse,Lengteklasse,,Aquo,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/habitat,Edm.String,Habitat,parameter/habitat,Habitat,,Aquo,,,Ecology|WaterQuality
+Parameter,parameter/projectMethod,Edm.String,Project method,parameter/projectmethode,Projectmethode,,Aquo,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/organ,Edm.String,Organ,parameter/orgaan,Orgaan,,Aquo,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/organism,Edm.String,The biotaxon of which the physical property is being observed/measured,parameter/organisme,Het biotaxon waarvan de fysieke eigenschap gemeten/geobserveerd is,,Aquo,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/analysisMethod,Edm.String,Analysis method,parameter/analysemethode,Analysemethode,,Aquo,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/validatingOrganisation,Edm.String,Checking organisation,parameter/validerendeOrganisatie,Controlerende instantie,,Aquo,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/samplingOrganisation,Edm.String,Sampling organisation,parameter/bemonsterendeOrganisatie,Bemonsterende instantie,,Aquo,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/valuationTechnique,Edm.String,Valuation technique,parameter/waardebepalingsmethode,Waardebepalingsmethode,,Aquo,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/valuationMethod,Edm.String,Valuation method,parameter/waardebepalingsmethode,Waardebepalingsmethode,,Aquo,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/substrateDifferentiation,Edm.String,Substrate differentiation,parameter/substraatdifferentiatie,Substraatdifferentiatie,,Aquo,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/casNumber,Edm.String,CAS number (chemical),parameter/casnummer,CAS-nummer (chemie),,Aquo,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/taxonRank,Edm.String,Taxon rank,parameter/taxonrang,Taxonomische rang,,TWN,,,Ecology
+Parameter,parameter/taxonNameNl,Edm.String,Taxon name in Dutch,parameter/taxonNaamNl,Taxonnaam in Nederlands,,TWN,,,Ecology
+Parameter,parameter/taxonGroup,Edm.String,Taxon group,parameter/taxongroep,Taxongroep,,TWN,,,Ecology
+Parameter,parameter/taxonType,Edm.String,Taxon type,parameter/taxontype,Taxontype,,TWN,,,Ecology
+Parameter,parameter/taxonAuthors,Edm.String,Taxon authors,parameter/taxonAuteurs,Taxon auteurs,,TWN,,,Ecologie
+Parameter,parameter/twnCode,Edm.String,TWN (Taxon Watermanagement Netherlands) code,parameter/twnCode,TWN (Taxon Waterbeheer Nederland) code,,TWN,,,Ecology
+Parameter,parameter/measurementPosition,Edm.String,Measurement position,parameter/meetpositie,Meetpositie,,AquaDesk,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/twnStatus,Edm.String,Taxon status according to TWN (Taxon Watermanagement Netherlands),parameter/TWNStatus,Taxon status volgens TWN (Taxon Waterbeheer Nederland),,TWN,,,Ecology
+Parameter,parameter/parameterType,Edm.String,"Type of parameter (CHEMS, TAXON, BIOTG, FYSIO)",parameter/parameterType,"Soort parameter (CHEMS, TAXON, BIOTG, FYSIO)",,AquaDesk,,,All
+Parameter,parameter/valueProcessingMethod,Edm.String,The method that is used to calculate the value of the result.,Waardebewerkingsmethode,"De methode die gebruikt is om de waarde van het resultaat te berekenen",,Aquo,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/qualityAssessment,Edm.String,Quality assessment,parameter/kwaliteitsoordeel,"Kwaliteitsoordeel",,Aquo,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/substrateDifferentiation,Edm.String,Substrate differentiation,parameter/substraatdifferentiatie, Substraatdifferentiatie,"",AquaDesk,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/samplingPackage,Edm.String,Sampling package,parameter/bemonsteringspakket,Bemonsteringspakket,,AquaDesk,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/samplingDevice,Edm.String,Sampling device,parameter/bemonsteringapparaat,Bemonsteringapparaat,,AquaDesk,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/condition,Edm.String,Condition of the sample,parameter/conditie,Conditie van het monster,,AquaDesk,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/recordingMethod,Edm.String,Recording method,parameter/opnamemethode,Opnamemethode,,AquaDesk,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/purpose,Edm.String,(Monitoring)Purpose,parameter/doel,(Meet-)doel,,Aquo,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/samplingMethod,Edm.String,Sampling method,parameter/bemonsteringsmethode,Bemonsteringsmethode,,Aquo,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/habitat,Edm.String,Habitat,parameter/habitat,Habitat,,Aquo,,,Ecology|WaterQuality
+Parameter,parameter/projectMethod,Edm.String,Project method,parameter/projectmethode,Projectmethode,,Aquo,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/organ,Edm.String,Biological property of the sample that specifies what organ is sampled,parameter/orgaan,Een biologisch kenmerk van het monster die specificeert welk orgaan bemonsterd is,,Aquo,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/observationTechnique,Edm.String,The technique used to execute the observation/analysis,parameter/observatietechniek,De techniek die gebruikt is om een observatie/analyse uit te voeren,,Aquo,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/observationMethod,Edm.String,The method used to execute the observation/analysis,parameter/observatiemethode,De methode die gebruikt is om een observatie/analyse uit te voeren,,Aquo,,,Ecology|WaterQuality|WaterQuantity
+Parameter,parameter/observingOrganisation,Edm.String,The organisation that performed the observation,WaarnemendeOrganisatie,De organisatie die de observatie uitvoert of heeft uitgevoerd,,Aquo,,,Ecology
+Parameter,parameter/completeness,Edm.String,Completeness of the result of the observation,parameter/compleetheid,Compleetheid van het resultaat van de observatie,,Aquo,,,Ecology
+Parameter,parameter/sediment,Edm.String,Sediment,parameter/sediment,"Sediment",,Aquo,,,Ecology
+Parameter,parameter/observationInstrumentType, Edm.String,Type of instrument used to perform the observation,parameter/typeObservatieInstrument,Het type instrument dat gebruikt wordt of gebruikt is om een observatie uit te voeren,,Aquo,,,Ecology
+Parameter,parameter/lengthClassInCm,Edm.String,parameter/lengteklasseInMm,"",,,AquaDesk,,,Ecology
+Parameter,parameter/lengthClassInMm,Edm.String,parameter/lengteklasseInCm,"",,,AquaDesk,,,Ecology
+Parameter,parameter/widthClassInCm,Edm.String,parameter/breedteklasseInMm,"",,,AquaDesk,,,Ecology
+Parameter,parameter/widthClassInMm,Edm.String,parameter/breedteklasseInCm,"",,,AquaDesk,,,Ecology
+MetaData,metadata/order,Edm.String,Order number/code,metadata/ordernummer,Opdrachtnummer/code,,AquaDesk,,,Ecology|WaterQuality|WaterQuantity
+MetaData,metadata/status,Edm.String,Status,metadata/status,Status van de observatie,,Aquo,,,All
+MetaData,metadata/action,Edm.String,"Action to be taken: none, replace, remove",metadata/actie, "Te ondernemen actie: geen, vervangen, verwijderen",,Aquo,,,Ecology|WaterQuality|WaterQuantity
+MetaData,metadata/observationComment,Edm.String,Observation comment,metadata/observatieopmerking,Opmerking bij de observatie, ,AquaDesk,,,
+MetaData,metadata/collectionComment,Edm.String,Collection comment,metadata/collectieopmerking,Opmerking bij de collectie (monster), ,AquaDesk,,,Ecology|WaterQuality|WaterQuantity
+MetaData,metadata/orderNumber,Edm.String,Order number,metadata/opdrachtnummer,opdrachtnummer,,AquaDesk,,,Ecology|WaterQuality|WaterQuantity
+MetaData,metadata/baseValue,Edm.Double,Basis value (observed),metadata/basiswaarde,Basiswaarde (geobserveerd),,AquaDesk,,,Ecology|WaterQuality
+MetaData,metadata/baseUnit,Edm.String,Base unit (observed),metadata/basiseenheid,Basiseenheid (van geobserveerde waarde),,AquaDesk,,,Ecology|WaterQuality
+MetaData,metadata/sampleReference,Edm.String,Sample reference (number),metadata/monsterreferentie,Monsterreferentie (collectienummer),,AquaDesk,,,Ecology|WaterQuality
+MetaData,metadata/samplingDeviceLength,Edm.String,Length of sampling device,metadata/bemonsteringapparaatlengte,Lengte bemonsteringsapparaat,,AquaDesk,,,Ecology|WaterQuality
+MetaData,metadata/samplingDeviceMeshSize,Edm.String,Mesh size of sampling device,metadata/bemonsteringsapparaatmaaswijdte,Maaswijdte bemonsteringsapparaat,,AquaDesk,,,Ecology|WaterQuality
+MetaData,metadata/samplingDeviceSpecification,Edm.String,Sampling device specification,metadata/bemonsteringdapparaatspecificatie,Specificatie bemonsteringsapparaat,,AquaDesk,,,Ecology|WaterQuality|WaterQuantity
+MetaData,metadata/formula,Edm.String,Formula,metadata/formule,Formule,,AquaDesk,,,Ecology|WaterQuality|WaterQuantity
+MetaData,metadata/aggregationKey,Edm.String,Aggregation key,metadata/aggregatiesleutel,Code van het monster dat gebruikt is om te aggregeren,,AquaDesk,,,Ecology|WaterQuality|WaterQuantity
+MetaData,metadata/resultOf,Edm.String,Result of,metadata/resultaatVan,Resultaat is afkomstig van (bewerking),,AquaDesk,,,Ecology|WaterQuality|WaterQuantity
+FoI,foi/id,Edm.String,Identifier,foi/id,Identificatie,,"",AquaDesk,,Ecology|WaterQuality|WaterQuantity
+FoI,foi/code,Edm.DateTime,Date,foi/code,Datum,,"",AquaDesk,,Ecology|WaterQuality|WaterQuantity
+FoI,foi/geometry,Edm.Geometry,Geometry,foi/geometry,Geometrie,,"",,,All
+FoI,foi/identities/krw,Edm.String,Identity of the measurement location according to the KRW system,foi/identiteiten/krw,Identiteit van de meetlocatie volgens het KRW systeem,,KRW,,,All
+FoI,foi/identities/stowa,Edm.String,Identity of the measurement location according to the STOWA system,foi/identiteiten/stowa,Identiteit van de meetlocatie volgens het STOWA systeem,,STOWA,,,All
+FoI,foi/identities/bro,Edm.String,Identity of the measurement location according to the BRO system,foi/identiteiten/bro,Identiteit van de meetlocatie volgens het BRO systeem,,BRO,,,All
+FoI,foi/identities/wkp,Edm.String,Identity of the measurement location according to the WKP system,foi/identiteiten/wkp,Identiteit van de meetlocatie volgens het WKP systeem,,WKP,,,All
+FoI,foi/identities/lmw,Edm.String,Identity of the measurement location according to the LMW system,foi/identiteiten/lmw,Identiteit van de meetlocatie volgens het LMW systeem,,LMW,,,All
+FoI,foi/classifications/krwWaterType,Edm.String,Water type according to KRW,foi/classifications/krwWaterType,Watertype volgens KRW,,KRW,,,All
+FoI,foi/classifications/krwMonitoringType,Edm.String,Monitoring type according to KRW,foi/classifications/krwMonitoringType,Monitoringtype volgens KRW,,KRW,,,All
+FoI,foi/classifications/krwStatus,Edm.String,Status according to KRW,foi/classifications/krwStatus,Status volgens KRW,,KRW,,,All
+FoI,foi/classifications/stowa,Edm.String,STOWA,foi/classifications/stowa,STOWA,,STOWA,,,All
+FoI,foi/classifications/ecotope,Edm.String,Ecotope,foi/classifications/ecotope,Ecotope,,STOWA,,,All
+Result,result/id,Edm.String,Identifier of the result,result/id,Identificatie van het resultaat,,"",,,Ecology|WaterQuality|WaterQuantity
+Result,result/truth,Edm.String,Truth,result/waarheid,Waarheid,,"",,,Ecology|WaterQuality|WaterQuantity
+Result,result/count,Edm.Int64,Count,result/aantal,Aantal,,"",,,Ecology|WaterQuality|WaterQuantity
+Result,result/measure/uom,Edm.String,Unit,result/meetwaarde/uom,Gemeten eenheid,,"",Aquo tenzij nameSpace gevuld is,,Ecology|WaterQuality|WaterQuantity
+Result,result/measure/value,Edm.Double,Measured value,result/measure/value,Gemeten waarde,,"",AquaDesk,,Ecology|WaterQuality|WaterQuantity
+Result,result/measure/limitSymbol,Edm.String,Limit symbol,result/measure/limitSymbol,"Limiet symbool",,Aquo,,,Ecology
+Result,result/measure/nameSpace,Edm.String,Name space,result/measure/nameSpace,"Namespace",,,,,All
+Result,result/vocab/vocabulary,Edm.String,Dictionary (domein table),result/vocab/vocabulary,Woordenboek (domeintabel),,,,,Ecology|WaterQuality|WaterQuantity
+Result,result/vocab/term,Edm.String,The term is a specific value of the property (domain value),result/vocab/term,Woord binnen het woordenboek (domeinwaarde),,"",,,Ecology|WaterQuality|WaterQuantity
+Result,result/coverageJSON,Edm.Untyped,Coverage JSON,result/coverageJSON,Coverage JSON,,"",,,Expectations|WaterQuantity|Ensembles|TimeSeries
+ParameterDetails,casNumber,Edm.String,CAS number (chemical),parameter/casnummer,CAS-nummer (chemie),,Aquo,,,Ecology|WaterQuality|WaterQuantity
+ParameterDetails,taxonRank,Edm.String,Taxon rank,parameter/taxonrang,Taxonomische rang,,TWN,,,Ecology
+ParameterDetails,taxonNameNl,Edm.String,Taxon name in Dutch,parameter/taxonNaamNl,Taxonnaam in Nederlands,,TWN,,,Ecology
+ParameterDetails,taxonGroup,Edm.String,Taxon group,parameter/taxongroep,Taxongroep,,TWN,,,Ecology
+ParameterDetails,taxonType,Edm.String,Taxon type,parameter/taxontype,Taxontype,,TWN,,,Ecology
+ParameterDetails,taxonAuthors,Edm.String,Taxon authors,parameter/taxonAuteurs,Taxon auteurs,,TWN,,,Ecologie
+ParameterDetails,twnCode,Edm.String,TWN (Taxon Watermanagement Netherlands) code,parameter/twnCode,TWN (Taxon Waterbeheer Nederland) code,,TWN,,,Ecology
+ParameterDetails,twnStatus,Edm.String,Taxon status according to TWN (Taxon Watermanagement Netherlands),parameter/TWNStatus,Taxon status volgens TWN (Taxon Waterbeheer Nederland),,TWN,,,Ecology
+ParameterDetails,parameterType,Edm.String,"Type of parameter (CHEMS, TAXON, BIOTG, FYSIO)",parameter/parameterType,"Soort parameter (CHEMS, TAXON, BIOTG, FYSIO)",,AquaDesk,,,All
+FoIIdentities,identities/krw,Edm.String,Identity of the measurement location according to the KRW system,foi/identiteiten/krw,Identiteit van de meetlocatie volgens het KRW systeem,,KRW,,,All
+FoIIdentities,identities/stowa,Edm.String,Identity of the measurement location according to the STOWA system,foi/identiteiten/stowa,Identiteit van de meetlocatie volgens het STOWA systeem,,STOWA,,,All
+FoIIdentities,identities/bro,Edm.String,Identity of the measurement location according to the BRO system,foi/identiteiten/bro,Identiteit van de meetlocatie volgens het BRO systeem,,BRO,,,All
+FoIIdentities,identities/wkp,Edm.String,Identity of the measurement location according to the WKP system,foi/identiteiten/wkp,Identiteit van de meetlocatie volgens het WKP systeem,,WKP,,,All
+FoIIdentities,identities/lmw,Edm.String,Identity of the measurement location according to the LMW system,foi/identiteiten/lmw,Identiteit van de meetlocatie volgens het LMW systeem,,LMW,,,All
+FoIClassifications,classifications/krwWaterType,Edm.String,Water type according to KRW,foi/classifications/krwWaterType,Watertype volgens KRW,,KRW,,,All
+FoIClassifications,classifications/krwMonitoringType,Edm.String,Monitoring type according to KRW,foi/classifications/krwMonitoringType,Monitoringtype volgens KRW,,KRW,,,All
+FoIClassifications,classifications/krwStatus,Edm.String,Status according to KRW,foi/classifications/krwStatus,Status volgens KRW,,KRW,,,All
+FoIClassifications,classifications/stowa,Edm.String,STOWA,foi/classifications/stowa,STOWA,,STOWA,,,All
+FoIClassifications,classifications/ecotope,Edm.String,Ecotope,foi/classifications/ecotope,Ecotope,,STOWA,,,All

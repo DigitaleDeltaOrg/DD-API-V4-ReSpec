@@ -89,7 +89,7 @@
                 <Property Name="truth" Type="Edm.Boolean"/>
                 <Property Name="count" Type="Edm.Int64"/>
                 <Property Name="measure" Type="DigitaleDeltaModels.Measure"/>
-                <Property Name="vocab" Type="DigitaleDeltaModels.VocabTerm"/>
+                <Property Name="category" Type="DigitaleDeltaModels.Category"/>
                 <Property Name="coverageJSON" Type="DigitaleDeltaModels.CoverageJSON"/>
                 <Property Name="retracted" Type="DigitaleDeltaModels.Retracted"/>
             </ComplexType>
@@ -99,9 +99,9 @@
                 <Property Name="namespace" Type="Edm.String"/>
                 <Property Name="limitSymbol" Type="Edm.String"/>
             </ComplexType>
-            <ComplexType Name="VocabTerm">
-                <Property Name="vocabulary" Type="Edm.String" Nullable="false"/>
-                <Property Name="term" Type="Edm.String" Nullable="false"/>
+            <ComplexType Name="Category">
+                <Property Name="nameSpace" Type="Edm.String" Nullable="false"/>
+                <Property Name="code" Type="Edm.String" Nullable="false"/>
             </ComplexType>
             <ComplexType Name="Retracted">
                 <Property Name="reason" Type="Edm.String" Nullable="false"/>

@@ -14,14 +14,6 @@ Doel van deze specificatie is het vereenvoudigen van het uitwisselen van water-g
 gegevens tussen verschillende partijen door een gestandaardiseerd contract dat de zoekmogelijkheden, gedrag en de uitvoer definiëert
 die door meerdere organisaties kan worden geïmplementeerd.
 
-// ... existing code ...
-
-Digitale Delta API V4 is een *READ-ONLY* RESTful API die toegang biedt tot water-gerelateerde [[Observatie]]s in Nederland. 
-
-Doel van deze specificatie is het vereenvoudigen van het uitwisselen van water-gerelateerde
-gegevens tussen verschillende partijen door een gestandaardiseerd contract dat de zoekmogelijkheden, gedrag en de uitvoer definiëert
-die door meerdere organisaties kan worden geïmplementeerd.
-
 Denk aan:
 
 - Waterschappen/Hoogheemraadschappen

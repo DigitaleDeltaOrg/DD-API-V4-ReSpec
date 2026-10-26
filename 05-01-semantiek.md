@@ -1,6 +1,6 @@
 # Semantiek
 
-In V4 is de semantiek explicieter en gestructureerder vastgelegd.  
+In V4 is de semantiek explicieter en gestructureerder vastgelegd dan in V3.  
 De semantiek bestaat uit meerdere componenten die samen bepalen welke gegevens binnen een DD API-implementatie mogen 
 worden aangeboden en hoe deze moeten worden geïnterpreteerd.
 
@@ -15,12 +15,10 @@ Een definitie-set bestaat ten minste uit:
 - `rule-types.csv`: de betekenis van de gebruikte regeltypen
 - `rules.csv`: de concrete regels die binnen de definitie-set gelden
 
-De inhoud van deze bestanden kan ook als machineleesbare JSON-representatie worden aangeboden, bijvoorbeeld als `definition-set.json`.
-
 Iedere response **MOET** de header `DD-V4-Semantics` meesturen. De waarde van deze header is een URL naar de definitie-set die voor de response is gebruikt, bijvoorbeeld:
 
 ```http 
-https://digitaledeltaorg.github.io/definitions/water/20261101`
+https://digitaledeltaorg.github.io/DD-API-V4-ReSpec/definitions/water/20261101
 ```
 
 Clients, validators en andere tooling kunnen deze header gebruiken om te bepalen welke semantiek, profielen en regels van toepassing zijn op de response.
@@ -29,25 +27,21 @@ Clients, validators en andere tooling kunnen deze header gebruiken om te bepalen
 
 De basis van de semantiek wordt gevormd door profielen. In `profiles.csv` staat welke profielen binnen een definitie-set beschikbaar zijn.
 
-Een profiel beschrijft een type gebruik, gegevensaanbod of toepassingscontext. Voorbeelden zijn:
+Een profiel beschrijft de semantische toepassingscontext waarin gegevens worden aangeboden.
+Profielen bepalen welke semantische eigenschappen uit `semantics.csv` binnen een `SemanticPropertyBag`, 
+zoals `parameter` of `metadata`, beschikbaar zijn.
 
-- losse waarnemingen
-- tijdreeksen
-- verwachtingen
-- ensemble
-- waterkwantiteit
-- waterkwaliteit
-- ecologie
+Een profiel bepaalt niet het resultaattype van een observatie. 
+Het resultaattype wordt bepaald door de eigenschap `type` op observation-niveau, met waarden 
+zoals `measure`, `count`, `category`, `truth` of `coverage`.
 
-Een speciaal profiel is 'All', dat aangeeft dat iets geldt voor *alle* profielen.
+Een profiel bepaalt ook niet de interne structuur van een CoverageJSON-resultaat.
+Wanneer type de waarde coverage heeft, wordt de concrete coverage-structuur bepaald door
+de CoverageJSON-inhoud en eventuele coverage-specifieke afspraken of extensies.
 
-Een DD API-implementatie kan één of meer profielen ondersteunen. Profielen kunnen elkaar overlappen: 
-een attribuut dat relevant is voor waterkwaliteit kan bijvoorbeeld ook relevant zijn voor ecologie.
-
-Profielen worden gebruikt om de semantiek hanteerbaar te houden. 
-Niet elk semantisch attribuut is voor elk type observatie of elk domein relevant. 
-Door attributen aan profielen te koppelen, kan per profiel worden bepaald welke eigenschappen beschikbaar zijn zonder 
-dat voor elke eigenschap afzonderlijke regels nodig zijn.
+Profielen kunnen worden gecombineerd. Een observatie of dataset kan bijvoorbeeld zowel het 
+profiel `TimeSeries` als `WaterQuantity` gebruiken. De toegestane eigenschappen in `parameter` en `metadata` 
+zijn dan de eigenschappen die volgens de actieve definitie-set bij die profielen horen, aangevuld of beperkt door de regels in `rules.csv`.
 
 ## Semantische attributen
 
@@ -149,11 +143,11 @@ expressiesyntaxis, gebaseerd op de DD API OData `$filter`-subset.
 Deze syntaxis is bedoeld voor eenvoudige vergelijkingen en logische combinaties, bijvoorbeeld:
 
 ```text 
-type ne 'Vocab'
+type ne 'category'
 ```
 
 ```text 
-type eq 'Measure' and parameter/quantity eq 'WATHTE'
+type eq 'measure' and parameter/quantity eq 'WATHTE'
 ```
 
 Aanwezigheid van andere attributen wordt bij voorkeur niet als vrije conditietekst uitgedrukt, maar via regeltypen zoals `requires` of `requiredWhenPresent`. Daarmee blijft de betekenis van regels eenduidig en machineleesbaar.
@@ -170,12 +164,12 @@ wanneer het resultaattype `Measure` is:
 
 ```csv 
 RuleId,RuleType,Properties,Target,Condition,Message,Message_nl,ForProfiles 
-result_measure_uom.requiredWhen.typeEqMeasure,requiredWhen,result/measure/uom,,type eq 'Measure',Property result/measure/uom is required when result type is Measure.,Eigenschap result/measure/uom is verplicht wanneer resultaattype Measure is.,Ecology|WaterQuality|WaterQuantity
+result_measure_uom.requiredWhen.typeEqMeasure,requiredWhen,result/measure/uom,,type eq 'measure',Property result/measure/uom is required when result type is 'measure'.,Eigenschap result/measure/uom is verplicht wanneer resultaattype 'measure' is.,Ecology|WaterQuality|WaterQuantity
 ```
 
 De combinatie betekent:
 
 - `semantics.csv`: `result/measure/uom` is beschikbaar binnen de genoemde profielen
-- `rules.csv`: `result/measure/uom` is verplicht wanneer `type eq 'Measure'`.
+- `rules.csv`: `result/measure/uom` is verplicht wanneer `type eq 'measure'`.
 
 Zonder de regel in `rules.csv` zou het attribuut dus wel toegestaan zijn, maar niet verplicht. 

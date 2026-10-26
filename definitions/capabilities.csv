@@ -1,5 +1,4 @@
 Id,Description,Description_nl
-Geo,Geo-formats,Geografie formaten
-Networks,(Monitoring) Networks,(Meet)netten
 CoverageFunctions,Aggregation and paging within coverage responses,Aggregatie en paginering in coverage-responses
 PubSub,Publish/subscribe,Publicatie/abonneren
+CRUD,"Insert, Update and Delete","Toevoegen, wijzigen en verwijderen"

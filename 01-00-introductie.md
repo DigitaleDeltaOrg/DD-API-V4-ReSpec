@@ -13,13 +13,13 @@ DD API V4 is een [[API]]-specificatie van Digitale Delta.
 Het is de opvolger van zowel de DD API V2 (niet langer ondersteund) als de DD ECO API. Het is een evolutie van de V3 specificatie.
 V3 en V4 zullen langere tijd (twee jaar) naast elkaar bestaan.
 
-De [[API]] beschikt niet over features zoals toevoegen, wijzigen of verwijderen van data.
+De basis [[API]] ('core') beschikt niet over features zoals toevoegen, wijzigen of verwijderen van data. Er is echter een optionele module die dat wel mogelijk maakt.
 
 De API houdt zich ook niet bezig met de correctheid van de data. Dat is de verantwoordelijkheid de bronhouder.
 
 ***De API is een selectie- en transportmiddel.***
 
-Wijzigingen van V4 ten opzichte van V3 staan [hier](02-wijzigingen.md) beschreven.
+Wijzigingen van V4 ten opzichte van V3 staan [hier](03-00-wijzigingen.md) beschreven.
 
 Aanbieders kunnen hun eigen implementatie maken, maar door zich aan deze gedetailleerde blauwdruk te houden, wordt data uitwisselbaar tussen verschillende systemen.
 
@@ -84,7 +84,7 @@ Gebruikers kunnen hierdoor eenvoudig data van verschillende bronnen combineren e
 
 Veel organisaties willen (watergerelateerde) metingen/waarnemingen [[Observatie]]s delen met andere organisaties of individuen.
 
-Er is echter nog geen uniforme wijze van het uitwisselen van deze data dat zowel kwantiteit- als kwaliteitsdata omvat.
+V4 is een uniforme wijze dat het uitwisselen van deze data dat zowel kwantiteit- als kwaliteitsdata mogelijk maakt.
 
 Kwantiteitsdata betreft metingen zoals waterstanden, stromingen, neerslag en grondwaterstanden. Deze worden _veelal_ als tijdreeksen uitgewisseld. 
 Verwachtingen kunnen ook als tijdreeksen worden uitgewisseld, bijvoorbeeld in [[CoverageJSON]] formaat. Datzelfde geldt voor ensembles, combinaties van tijdreeksen.
@@ -92,7 +92,7 @@ Verwachtingen kunnen ook als tijdreeksen worden uitgewisseld, bijvoorbeeld in [[
 Kwaliteitsdata betreft metingen zoals ecologische waarnemingen, visvangsten, tellingen en laboratoriumanalyses. 
 Deze worden vaak als losse observaties uitgewisseld, mede omdat de informatie die hierbij wordt uitgewisseld vaak niet uniform is en vaak veel uitgebreider dan kwantiteitsdata.
 
-DD API V3 biedt een gestandaardiseerde aanpak voor het uitwisselen van deze data, waardoor het eenvoudiger wordt om systemen te koppelen en gegevens te integreren.
+DD API V4 biedt een gestandaardiseerde aanpak voor het uitwisselen van deze data, waardoor het eenvoudiger wordt om systemen te koppelen en gegevens te integreren.
 
 Het is gebaseerd op open standaarden zoals OGC [[OM&S]] voor het modelleren van observatiegegevens en OData voor het zoeken en filteren van data.
 
@@ -115,7 +115,7 @@ De blauwdruk is essentieel voor:
 | Informatief | Inleiding NL API Strategie            |
 | Informatief | Architectuur NL API Strategie         |
 | Informatief | API Design Rules (ADR v2.0)           |
-| Normatief   | [[OpenAPI 3.0]]                       |
+| Normatief   | [[OpenAPI 3.1]]                       |
 | Normatief   | Module Transport Security module v1.0 |
 | Normatief   | [[EPSG]]                              |
 | Normatief   | [[OData]]                             |
@@ -126,7 +126,7 @@ Alvorens dit document te lezen, is het aan te raden kennis te nemen van de infor
 
 De normatieve documenten zijn belangrijk voor het begrijpen van de blauwdruk.
 
-### Versiebeheer
+### Versiebeheerder
 
 Deze specificatie hanteert [Semantic Versioning](https://semver.org/lang/nl/) (MAJOR.MINOR.PATCH). 
 

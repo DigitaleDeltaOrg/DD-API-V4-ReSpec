@@ -15,7 +15,7 @@ Een implementatie hoeft deze structuur intern niet als opslagmodel te gebruiken;
 </aside>
 
 Dit hoofdstuk beschrijft het datamodel van DD API V4, gebaseerd op een subset van de OGC [[OM&S]] standaard.
-Casing van de eigenschappen volgen in V4 de JSON-camelCase conventie.
+De casing van de eigenschappen volgen in V4 de JSON-camelCase conventie.
 
 Dit beschrijft de JSON-representatie van een observatie.
 
@@ -25,24 +25,21 @@ MIM is bedoeld voor conceptuele en logische informatiemodellen (niveau 1-3), nie
 
 Vet is verplicht.
 
-Een JSON-schema voor het observation type is [hier](https://github.com/DigitaleDeltaOrg/DD-API-V3-ReSpec/raw/refs/heads/main/main/definitions/v3.0/json-schema/observation.schema.json) beschikbaar.
-
-Het gehele OData response in JSON-schema voor het `/v3/odata/observations` endpoint is [hier](https://github.com/DigitaleDeltaOrg/DD-API-V3-ReSpec/tree/main/definitions/v3.0/json-schema/odata.observation.schema.json) beschikbaar.
-
 ## Observation
 Observation beschrijft de omstandigheden en de resultaten van een observatie.
 
-| Eigenschap         | Type                                                             | Omschrijving                                                                                                                                        |
-|--------------------|------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
-| **id**             | string                                                           | Unieke id van de observatie. Aangepast met casing t.o.v. V3                                                                                         |
-| **resultTime**     | string                                                           | Datum en tijd waarop het resultaat beschikbaar is gekomen, in ISO8601 formaat. Het geeft aan wanneer het resultaat is opgenomen in het bronsysteem. |
-| **phenomenonTime** | [Tm_Period](#Tm_Period_Closed)                                   | Periode waarin is gemeten/bemonsterd. Begin- en EndPosition zijn in ISO8601 formaat.                                                                |
-| validTime          | [Tm_Period](#Tm_Period_OpenEnd)                                  | Geldigheidsperiode van de data.                                                                                                                     |
-| **foi**            | [FoI](#FoI)                                                      | Feature of Interest: in DD API V3 altijd geolocatie van de observatie. Geeft aan _waar_ gemeten is.                                                 |
-| **parameter**      | [SemanticPropertyBag("parameter/")](06-semantic-property-bag.md) | Beschrijft de omstandigheden van de observatie: _wat_ en _waarmee_ er gemeten is.                                                                   |
-| metadata           | [SemanticPropertyBag("metadata/")](06-semantic-property-bag.md)  | Extra informatie over de observatie, ongeklassificeerd, zoals ordernummer.                                                                          |
-| **result**         | [Result](#result)                                                | Resultaat: de _uitkomst_ van de observatie.                                                                                                         |
-| **modifiedOn**     | string                                                           | Datum creatie of laatste wijziging in ISO8601 date-time formaat.                                                                                    | ISO8601 formaat. | 
+| Eigenschap         | Type                                                               | Omschrijving                                                                                                                                        |
+|--------------------|--------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| **id**             | Edm.String                                                         | Unieke id van de observatie. Aangepast met casing t.o.v. V3                                                                                         |
+| **resultTime**     | Edm.String                                                         | Datum en tijd waarop het resultaat beschikbaar is gekomen, in ISO8601 formaat. Het geeft aan wanneer het resultaat is opgenomen in het bronsysteem. |
+| **type**           | Edm.String                                                         | Beschrijft het type van `result`. Mogelijke waarden zijn: count, measure, truth, category, coverage.                                                |
+| **phenomenonTime** | [Tm_Period](#Tm_Period_Closed)                                     | Periode waarin is gemeten/bemonsterd. Begin- en EndPosition zijn in ISO8601 formaat.                                                                |
+| validTime          | [Tm_Period](#Tm_Period_OpenEnd)                                    | Geldigheidsperiode van de data.                                                                                                                     |
+| **foi**            | [FoI](#FoI)                                                        | Feature of Interest: altijd geolocatie van de observatie. Geeft aan _waar_ gemeten is.                                                              |
+| **parameter**      | [SemanticPropertyBag("parameter")](06-00-semantic-property-bag.md) | Beschrijft de omstandigheden van de observatie: _wat_ en _waarmee_ er gemeten is.                                                                   |
+| metadata           | [SemanticPropertyBag("metadata")](06-00-semantic-property-bag.md)  | Extra informatie over de observatie, ongeklassificeerd, zoals ordernummer.                                                                          |
+| **result**         | [Result](#result)                                                  | Resultaat: de _uitkomst_ van de observatie.                                                                                                         |
+| **modifiedOn**     | Edm.String                                                         | Datum creatie of laatste wijziging in ISO8601 date-time formaat.                                                                                    | 
 
 ## Tm_Period_Closed
 
@@ -60,28 +57,31 @@ Beschrijft een periode met begin- en einddatum. Einddatum is niet verplicht. De 
 | Eigenschap | Type   | Omschrijving                                       |
 |------------|--------|----------------------------------------------------|
 | **begin**  | string | Begin van de periode in ISO8601 date-time formaat. |
-| **end**    | string | Eind van de periode in ISO8601 date-time formaat.  |
+| end        | string | Eind van de periode in ISO8601 date-time formaat.  |
 
 ## FoI
 
-In DD API V3 is FoI (Feature of Interest) altijd een geolocatie.
+FoI (Feature of Interest) is in DD API V3/V4 altijd een geolocatie.
 
-| Eigenschap      | Type                                                                        | Omschrijving                                                  |
-|-----------------|-----------------------------------------------------------------------------|---------------------------------------------------------------|
-| **id**          | string                                                                      | Uniek id van de meetlocatie. Aangepast met casing t.o.v. V3   |
-| **code**        | string                                                                      | Code van de meetlocatie.                                      |
-| **description** | string                                                                      | Beschrijving van de meetlocatie.                              |
-| **geometry**    | GeoJSON                                                                     | GeoJSON behorende bij de meetlocatie. Hernoemd naar geometry. |
-| identities      | [SemanticPropertyBag("FoIIdentities")](06-00-semantic-property-bag.md)      | Identities van het meetobject in andere systemen.             |
-| classifications | [SemanticPropertyBag("FoIClassifications")](06-00-semantic-property-bag.md) | Classificaties van het meetobject in andere systemen.         |
+| Eigenschap      | Type                                                                                      | Omschrijving                                                  |
+|-----------------|-------------------------------------------------------------------------------------------|---------------------------------------------------------------|
+| **id**          | Edm.String                                                                                | Uniek id van de meetlocatie. Aangepast met casing t.o.v. V3   |
+| **code**        | Edm.String                                                                                | Code van de meetlocatie.                                      |
+| **description** | Edm.String                                                                                | Beschrijving van de meetlocatie.                              |
+| **geometry**    | Edm.Geometry                                                                              | GeoJSON behorende bij de meetlocatie. Hernoemd naar geometry. |
+| identities      | [SemanticPropertyBag("foiIdentitiesForObservation")](06-00-semantic-property-bag.md)      | Identities van het meetobject in andere systemen.             |
+| classifications | [SemanticPropertyBag("foiClassificationsForObservation")](06-00-semantic-property-bag.md) | Classificaties van het meetobject in andere systemen.         |
+| networks        | Collection(Edm.String)                                                                    | Netwerken waar het meetobject bij hoort.                      |
+
+> De FoI binnen een Observation wordt als ComplexType opgenomen; `/v4/odata/foi` is de OData-collectie voor meetobjecten.
 
 ## Parameter
 
 Parameter volgens [[OM&S]] is een dictionary van key/value pairs.
 
-In DD API V3 is value altijd een string, waarbij geldt dat de combinatie van key en value uniek is per observatie,
+In DD API V4 is value altijd een string, waarbij geldt dat de combinatie van key en value uniek is per observatie,
 maar ook dat die combinatie **zoveel mogelijk** overeenkomt met de Aquo-termen, maar die combinatie moet ook voorkomen 
-in de data van het referentie-endpoint.
+in de data in het parameter-endpoint.
 
 De keys moeten altijd conform de specifieke semantiek (semantics.csv) zijn en beginnen met `parameter/`.
 
@@ -97,14 +97,14 @@ Result is het resultaat van een observatie.
 
 Het formaat van Result is afhankelijk van het type van de observatie.  
 
-| Eigenschap | Type                | Omschrijving                                                                              |
-|------------|---------------------|-------------------------------------------------------------------------------------------|
-| **id**     | Edm.String          | Uniek Id van het resultaat (_mag_ gelijk zijn aan het Id van de observatie).              |
-| _truth_    | Edm.String          | Wanneer het resultaat een waarheid representeerd (waar/onwaar, true/false).               |
-| _vocab_    | [Vocab](#vocab)     | Wanneer het een `typering` volgens Aquo betreft.                                          |
-| _count_    | Edm.Int64           | Pure 'telling', bijvoorbeeld onder een microscoop, altijd een heel getal, zonder eenheid. |
-| _coverage_ | [[CoverageJSON]]    | Tijdreeksen of verwachtingen.                                                             |
-| _measure_  | [Measure](#measure) | Waarde/eenheid combinatie.                                                                |
+| Eigenschap | Type                  | Omschrijving                                                                              |
+|------------|-----------------------|-------------------------------------------------------------------------------------------|
+| **id**     | Edm.String            | Uniek Id van het resultaat (_mag_ gelijk zijn aan het Id van de observatie).              |
+| _truth_    | Edm.String            | Wanneer het resultaat een waarheid representeert (waar/onwaar, true/false).               |
+| _category_ | [Category](#category) | Wanneer het een `typering` volgens Aquo betreft.                                          |
+| _count_    | Edm.Int64             | Pure 'telling', bijvoorbeeld onder een microscoop, altijd een heel getal, zonder eenheid. |
+| _coverage_ | [[CoverageJSON]]      | Tijdreeksen of verwachtingen.                                                             |
+| _measure_  | [Measure](#measure)   | Waarde/eenheid combinatie.                                                                |
 
 #### Hulp bij interpretatie voor IM Metingen
 
@@ -113,10 +113,8 @@ grootheid (en alfanumerieke waarde), zijn dat in [[OM&S]] verschillende soorten 
 
 ##### Wanneer het een Aquo `Typering` betreft
 
-Gebruik type [Vocab](#vocab). De `Vocabulary` (woordenlijst) daarin wordt dan gelijk aan de code van de typering 
-en `Term` (woord) wordt gelijk aan de alfanumerieke waarde die binnen die typering gebruikt kan worden.
-Indien deze definitie van Aquo afkomstig is, dan _mag_ de namespace leeg blijven. 
-Anders moet die gevuld worden met de code voor het bronsysteem die de typering definiëert.
+Gebruik type [Category](#category). De `namespace` (woordenlijst) daarin wordt dan gelijk aan de code van de typering 
+en `code` (woord) wordt gelijk aan de alfanumerieke waarde die binnen die typering gebruikt kan worden.
 
 ##### Wanneer het een Aquo `Grootheid` betreft
 
@@ -134,20 +132,19 @@ Gemeten waarde met eenheid.
 | namespace   | Edm.String | Bron voor de definitie. Indien leeg, Aquo.                  |
 | limitSymbol | Edm.String | Limietsymbool.                                              |
 
-## Vocab
+## Category
 
 Onderwerp/waarde combinatie (classificatie).
 
-| Eigenschap     | Type       | Omschrijving                                               |
-|----------------|------------|------------------------------------------------------------|
-| **vocabulary** | Edm.String | Woordenboek (naam van de Aquo domeintabel).                |
-| **term**       | Edm.String | Woord/term (definitie) binnen de vocabulary (domeintabel). |
-| namespace      | Edm.String | Bron voor de definitie. Indien leeg, Aquo.                 |
+| Eigenschap    | Type       | Omschrijving                      |
+|---------------|------------|-----------------------------------|
+| **namespace** | Edm.String | Domeintabel.                      |
+| **code**      | Edm.String | Domeinwaarde binnen de namespace. |
 
 ## CoverageJSON
 
 Voor tijdreeksen wordt gebruik gemaakt van [[CoverageJSON]] formaat.
-Voor DD API V4 zijn er aan implementeren van een correcte CoverageJSON een aantal eisen gesteld:
+Voor DD API V4 worden aan het implementeren van correcte CoverageJSON de volgende eisen gesteld:
 
 - Voor sensoren wordt aangeraden om een tijdreeks te hebben met de naam van een Aquo waarnemingssoort.
   Dit zorgt ervoor dat eenvoudig een selectie kan plaatsvinden.

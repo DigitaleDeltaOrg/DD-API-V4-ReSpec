@@ -1,6 +1,7 @@
 # Ontwerpconcepten
 
-De DD API V4 specificatie is ontworpen met een aantal kernconcepten in gedachten om interoperabiliteit, flexibiliteit en gebruiksgemak te waarborgen.
+De DD API V4 specificatie is ontworpen met een aantal kernconcepten in gedachten om interoperabiliteit, 
+flexibiliteit en gebruiksgemak te waarborgen.
 Hieronder worden de belangrijkste ontwerpconcepten toegelicht.
 
 - Eenvoudig, gestandaardiseerd, virtueel datamodel
@@ -33,7 +34,7 @@ De specificatie gebruikt een subset van de [[OM&S]] standaard.
 De standaard zelf is zeer uitgebreid en flexibel, maar daardoor ook complex en door verschillende uitbreidingen en interpretaties, moeilijk uitwisselbaar.
 
 Door gebruik te maken van een subset en profielen, wordt de complexiteit verminderd en wordt interoperabiliteit vergroot.
-In V4 zijn er kleine uitbreidingen aan de subset van OM&S. Zo is result/measure uitgebreid met nameSpace en limitSymbol.
+In V4 zijn er kleine uitbreidingen aan de subset van OM&S. Zo is result/measure uitgebreid met namespace en limitSymbol.
 Namespace is erbij gekomen, omdat een aantal eenheden domein-specifiek zijn. LimitSymbol is erbij gekomen, omdat dit een veelgebruikte eigenschap is o.a. voor laboratoriummetingen.
 
 Omdat DD API primair een uitwisselprotocol is, en meetinformatie kan wijzigen, is het belangrijk om te communiceren dat een meting veranderd is.
@@ -41,13 +42,15 @@ Daarom is modifiedOn van metadata verhuisd naar observation-niveau zelf, dus ook
 
 [[OM&S]] staat deze uitbreidingen toe, maar ons doel is het om het model zo minimalistisch mogelijk te houden.
 
-## Subset van [[OData]] V4
+## Subset van [[OData]] V4.01
 
 De specificatie beschrijft een standaard subset van [[OData]] die gebruikt moet worden, met een aantal uitbreidingen specifiek voor waterdata in Nederland.
 
 Deze subset is gekozen om de implementatie eenvoudiger te maken en om ruimte voor interpretatieverschillen tussen verschillende implementaties te verminderen.
 
-Voor meer details, zie [OData subset](07-odata-subset).
+Voor meer details, zie [OData subset](05-02-odata-subset).
+
+> V4.01 is nodig, omdat die `Edm.Untyped` definieert, wat nodig is om ongestructureerde (JSON) payloads toe te staan. 
 
 ## Semantische Uitwisselbaarheid
 

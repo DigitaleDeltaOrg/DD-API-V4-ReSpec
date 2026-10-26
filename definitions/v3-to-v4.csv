@@ -18,7 +18,7 @@ Parameter/ValuationMethod,parameter/observationMethod
 Parameter/ValuationTechnique,parameter/observationTechnique
 Parameter/Supplier,parameter/observingOrganisation
 Parameter/Organisation,parameter/dataOwner
-Parameter/MeasurementDevice,parameter/ObservationInstrumentType
+Parameter/MeasurementDevice,parameter/observationInstrumentType
 Parameter/KrwCode,foi/classifications/krwWaterType
 Parameter/StowaCode,foi/classifications/stowa
 Parameter/EcotopeSystem,foi/classifications/ecotope

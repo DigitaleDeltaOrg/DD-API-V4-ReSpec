@@ -1,4 +1,4 @@
-# DD API V4 Respec
+# DD API V4 ReSpec
 
 Digitale Delta API V4 is een *READ-ONLY* RESTful API die toegang biedt tot water-gerelateerde observaties in Nederland, maar breder in te zetten is dan het waterdomein.
 DD API V4 is een doorontwikkeling van DD API V3 en is ontworpen om ook _naast_ DD API V3 te kunnen bestaan.
@@ -12,3 +12,5 @@ Ook verwachtingen en ensembles kunnen worden uitgewisseld.
 
 V4 is momenteel nog work-in-progres en wordt voorlopig in delen opgeleverd.
 
+Optionele onderdelen (Write, CoverageFunctions, PubSub) zullen hun eigen repository krijgen en worden 
+na _deze_ specificatie gepubliceerd.

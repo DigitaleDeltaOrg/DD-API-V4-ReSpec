@@ -16,15 +16,15 @@ Vet is verplicht.
 
 Verplichte eigenschappen zijn vetgedrukt. De rest is alleen nodig wanneer het onderliggende systeem die eigenschappen werkelijk gebruiken.
 
-| Eigenschap             | Type                                                                   | Omschrijving                                                                    |
-|------------------------|------------------------------------------------------------------------|---------------------------------------------------------------------------------|
-| **id**                 | Edm.String                                                             | Id van de referentie.                                                           |
-| **type**               | Edm.String                                                             | Soort referentie. Gebruik de naam van de domeintabel volgens de taalschakelaar. |
-| **sourceOrganisation** | Edm.String                                                             | Afkorting van de bronhouder.                                                    |
-| sourceNamespace        | Edm.String                                                             | Namespace van de bronhouder.                                                    |
-| **code**               | Edm.String                                                             | Code van de entiteit (domeinwaarde).                                            |
-| **description**        | Edm.String                                                             | Omschrijving van de entiteit (domeinwaarde).                                    |
-| reference              | Edm.String                                                             | Referentie naar de definitie in het bronsysteem.                                |  
-| details                | [SemanticPropertyBag("ParameterDetails")](06-00-semantic-property-bag) | Relevante details, optioneel.                                                   |   
+| Eigenschap       | Type                                                                      | Omschrijving                                                                    |
+|------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------------|
+| **id**           | Edm.String                                                                | Id van de referentie.                                                           |
+| **type**         | Edm.String                                                                | Soort referentie. Gebruik de naam van de domeintabel volgens de taalschakelaar. |
+| **organisation** | Edm.String                                                                | Afkorting van de bronhouder.                                                    |
+| namespace        | Edm.String                                                                | Namespace van de bronhouder.                                                    |
+| **code**         | Edm.String                                                                | Code van de entiteit (domeinwaarde).                                            |
+| **description**  | Edm.String                                                                | Omschrijving van de entiteit (domeinwaarde).                                    |
+| reference        | Edm.String                                                                | Referentie naar de definitie in het bronsysteem.                                |  
+| details          | [SemanticPropertyBag("parameterDetails")](06-00-semantic-property-bag.md) | Relevante details, optioneel.                                                   |   
 
-`type` moet de naam van de domeintabel zijn, afhankelijk van de taalschakelaar, Engels of Nederlands. 
+`type` moet de naam van de domeintabel zijn, afhankelijk van de taalschakelaar, Engels of Nederlands.  

@@ -377,9 +377,9 @@ components:
             - type: object
               nullable: true
           description: Result is expressed in a unit and a value
-        vocab:
+        category:
           anyOf:
-            - $ref: '#/components/schemas/DigitaleDelta.CategoryVerb'
+            - $ref: '#/components/schemas/DigitaleDelta.Category'
             - type: object
               nullable: true
           description: Result is expressed in a vocabulary
@@ -410,14 +410,14 @@ components:
           type: string
           description: NameSpace of the unit of the measured value
 
-    DigitaleDelta.CategoryVerb:
-      title: CategoryVerb
+    DigitaleDelta.Category:
+      title: Category
       type: object
       properties:
-        vocabulary:
+        nameSpace:
           type: string
           description: Vocabulary
-        term:
+        code:
           type: string
           description: Term within the vocabulary
 

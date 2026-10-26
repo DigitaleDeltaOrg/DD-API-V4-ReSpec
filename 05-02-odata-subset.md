@@ -6,7 +6,6 @@ De gedachte erachter is dat DD API V4 niet gebruikt moet worden voor data beheer
 maar puur voor het opvragen van data.
 Omdat de datasets potentieel erg groot kunnen zijn, is het belangrijk dat de zoekmogelijkheden krachtig, 
 maar ook efficiënt zijn.
-Daarom worden functies als `$orderby`, `$expand`, `$compute` en `$inlinecount` niet ondersteund.
 
 De subset bevat:
 
@@ -16,8 +15,8 @@ De subset bevat:
 * `$select` (`$expand` is overbodig in het model)
 * `$count`
 * Alle OData functies, zoals `year()`, `month()`, `startswith()`, `endswith()`, **behalve** de geografische functies.
-* Een tweetal vereenvoudigde, vervangende geografische functies, specifiek voor DD API V3: `intersects()` en `distance()`
-* Een vereenvoudige functie voor zoeken binnen lijsten: `has()`
+* Een tweetal vereenvoudigde, vervangende geografische functies: `intersects()` en `distance()`. Deze vervangen de OData geo.* functies.
+* Een vereenvoudigde functie voor zoeken binnen lijsten: `has()`
 
 Andere OData functionaliteit wordt niet ondersteund, dus ook niet:
 
@@ -30,20 +29,25 @@ Andere OData functionaliteit wordt niet ondersteund, dus ook niet:
 
 ## Gebruik `$skiptoken`, _niet_ `$skip`
 
+DD API V4 gebruikt `$skiptoken` voor paginering. `$skip` wordt niet ondersteund.
+
+`$skip` en `$skiptoken` zijn wederzijds uitsluitend. Een request **MAG NIET** beide queryopties bevatten.
+Omdat `$skip` binnen DD API V4 niet is toegestaan, **MOET** een request met `$skip` worden afgewezen met `400 Bad Request`, ook wanneer daarnaast `$skiptoken` aanwezig is.
+
 Reden is dat `$skip` inefficiënt is bij grote datasets (en naarmate grotere pagina's worden gekozen), omdat de server alle records moet doorlopen om de juiste records te vinden.
 
-Met `$skiptoken` kan de server direct naar de juiste plek in de dataset springen. Het wordt via de `@odata.nextLink property` in de response doorgegeven.
+Met `$skiptoken` kan de server direct naar de juiste plek in de dataset springen. Het wordt via de `@odata.nextLink` property in de response doorgegeven.
 In `$skiptoken` wordt meestal het laatste Id van de vorige response gebruikt, maar het kan ook een andere waarde zijn die de server gebruikt om de juiste plek in de dataset te vinden.
 Dit moet uiteraard in combinatie met `$filter` gebruikt worden, zodat de server weet of de zoekopdracht hetzelfde blijft.
 
 `$skiptoken` heeft enige limieten:
 
-- Pagina's kunnen niet worden overgeslagen, die springen naar pagina X kan niet
-- Er kan niet naar een vorige pagina terug worden gegaan
+- Pagina's kunnen niet worden overgeslagen, dus springen naar pagina X kan niet.
+- Er kan niet naar een vorige pagina terug worden gegaan.
 
-Dit zorgt er echter voor dat de data consistent is: er kunnen niet resultaten worden overgeslagen of vergeten.
+Dit zorgt er echter voor dat de data consistent is: er worden geen resultaten overgeslagen of dubbel teruggegeven.
 
-`$top` bepaalt het maximum aantal entiteiten (zoals Observations of References) in de `value` array van de response. 
+`$top` bepaalt het maximum aantal OData entiteiten (zoals Observations) in de `value` array van de response.
 Bij een tijdreeks (CoverageJSON) telt de gehele tijdreeks als één enkel item, ongeacht het aantal meetwaarden daarin.
 
 ## Extra functies
@@ -52,9 +56,7 @@ Sommige eigenschappen in de response kunnen een Collection terug geven, een arra
 In plaats van complexe lambda's (zoals `any` en `all`) wordt er gebruik gemaakt van de `has` functie.
 Er kan dus bepaald worden of een bepaalde waarde voorkomt in een array.
 
-```odata
-$filter=has(Foi/MonitoringNetworks, 'Net') eq true
-```
+Voorbeeld: `$filter=has(foi/networks, 'KRW-Monitoring') eq true`
 
 ## Geografische functies
 

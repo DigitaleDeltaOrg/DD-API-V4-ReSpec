@@ -252,8 +252,8 @@
         <text class="text" x="490" y="660">truth</text>
         <text class="text-muted" x="650" y="660">boolean/string</text>
 
-        <text class="text" x="490" y="690">vocab</text>
-        <text class="text-muted" x="650" y="690">Vocab</text>
+        <text class="text" x="490" y="690">category</text>
+        <text class="text-muted" x="650" y="690">Category</text>
 
         <text class="text" x="490" y="720">count</text>
         <text class="text-muted" x="650" y="720">integer</text>
@@ -284,16 +284,16 @@
         <text class="text-muted" x="210" y="750">string</text>
     </g>
 
-    <!-- Vocab -->
-    <g id="vocab">
+    <!-- category -->
+    <g id="category">
         <rect class="box-result" x="55" y="790" width="330" height="135"/>
         <path class="header-result" d="M 65 790 H 375 A 10 10 0 0 1 385 800 V 835 H 55 V 800 A 10 10 0 0 1 65 790 Z"/>
-        <text class="title" x="75" y="818">Vocab</text>
+        <text class="title" x="75" y="818">Category</text>
 
-        <text class="text required" x="75" y="865">vocabulary</text>
+        <text class="text required" x="75" y="865">nameSpace</text>
         <text class="text-muted" x="210" y="865">string</text>
 
-        <text class="text required" x="75" y="895">term</text>
+        <text class="text required" x="75" y="895">code</text>
         <text class="text-muted" x="210" y="895">string</text>
 
         <text class="text" x="75" y="925">namespace</text>
@@ -334,7 +334,7 @@
     <text class="text-muted" x="405" y="735">measure</text>
 
     <path class="line" d="M 470 690 C 430 690, 425 855, 385 855" marker-end="url(#arrow)"/>
-    <text class="text-muted" x="405" y="820">vocab</text>
+    <text class="text-muted" x="405" y="820">category</text>
 
     <path class="line" d="M 890 750 C 930 750, 935 750, 975 750" marker-end="url(#arrow)"/>
     <text class="text-muted" x="910" y="735">coverage</text>

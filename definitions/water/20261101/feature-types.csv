@@ -1,0 +1,13 @@
+Name,Description,NL-Name
+ObservationSite,Observation site,Observatiepunt
+MeasurementObject,Measurement object,Meetobject
+MonitoringNetwork,Monitoring network,Meetnet
+WaterBody,Water body,Waterlichaam
+ManagementArea,Management area,Beheergebied
+HydraulicStructure,Hydraulic structure,HydraulischeStructuur
+FloodDefence,Flood defence,Overstromingsbescherming
+Reservoir,Reservoir,Reservoir
+DischargePoint,Discharge point,Uitlaat
+IntakePoint,Intake point,Inlaat
+SensorLocation,Sensor location,Sensorlocatie
+SamplingLocation,Sampling location,Bemonsteringslocatie

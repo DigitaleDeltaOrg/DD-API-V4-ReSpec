@@ -24,17 +24,7 @@
                 <Property Name="description" Type="Edm.String" Nullable="false"/>
                 <Property Name="identities" Type="DigitaleDeltaModels.FoiIdentityContainer"/>
                 <Property Name="classifications" Type="DigitaleDeltaModels.FoiClassificationContainer"/>
-            </EntityType>
-            <EntityType Name="Network">
-                <Key>
-                    <PropertyRef Name="id"/>
-                </Key>
-                <Property Name="id" Type="Edm.String" Nullable="false"/>
-                <Property Name="type" Type="Edm.String"/>
-                <Property Name="organisation" Type="Edm.String"/>
-                <Property Name="code" Type="Edm.String" Nullable="false"/>
-                <Property Name="geometry" Type="Edm.Geometry"/>
-                <Property Name="description" Type="Edm.String" Nullable="false"/>
+                <Property Name="networks" Type="Collection(Edm.String)"/>
             </EntityType>
             <EntityType Name="Observation">
                 <Key>
@@ -64,6 +54,7 @@
                 <Property Name="code" Type="Edm.String" Nullable="false" />
                 <Property Name="description" Type="Edm.String" Nullable="false" />
                 <Property Name="geometry" Type="Edm.Geometry" />
+                <Property Name="networks" Type="Collection(Edm.String)"/>
                 <!-- Uitbreiden met eigen selectie van eigenschappen uit Semantics.csv groep FoI -->
             </ComplexType>
             <ComplexType Name="ParameterContainer">
@@ -106,13 +97,6 @@
             <ComplexType Name="Retracted">
                 <Property Name="reason" Type="Edm.String" Nullable="false"/>
             </ComplexType>
-            <EntityType Name="relatedObservation">
-                <Key>
-                    <PropertyRef Name="id"/>
-                </Key>
-                <Property Name="id" Type="Edm.String" Nullable="false"/>
-                <Property Name="role" Type="Edm.String" Nullable="false"/>
-            </EntityType>
             <ComplexType Name="CoverageJSON" OpenType="true">
                 <Property Name="type" Type="Edm.String"/>
                 <Property Name="domain" Type="DigitaleDeltaModels.CoverageDomain"/>
@@ -177,7 +161,7 @@
         </Schema>
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Default">
             <Function Name="intersects" IsBound="false">
-                <Parameter Name="bindingParameter" Type="DigitaleDeltaModels.Reference"/>
+                <Parameter Name="bindingParameter" Type="DigitaleDeltaModels.Foi"/>
                 <Parameter Name="wkt" Type="Edm.String"/>
                 <ReturnType Type="Edm.Boolean" Nullable="false"/>
             </Function>
@@ -187,7 +171,7 @@
                 <ReturnType Type="Edm.Boolean" Nullable="false"/>
             </Function>
             <Function Name="distance" IsBound="true">
-                <Parameter Name="bindingParameter" Type="DigitaleDeltaModels.Reference"/>
+                <Parameter Name="bindingParameter" Type="DigitaleDeltaModels.Foi"/>
                 <Parameter Name="wkt" Type="Edm.String"/>
                 <ReturnType Type="Edm.Double" Nullable="false"/>
             </Function>
@@ -197,7 +181,8 @@
                 <ReturnType Type="Edm.Double" Nullable="false"/>
             </Function>
             <EntityContainer Name="Container">
-                <EntitySet Name="references" EntityType="DigitaleDeltaModels.Reference"/>
+                <EntitySet Name="parameters" EntityType="DigitaleDeltaModels.Parameter"/>
+                <EntitySet Name="foi" EntityType="DigitaleDeltaModels.Foi"/>
                 <EntitySet Name="observations" EntityType="DigitaleDeltaModels.Observation"/>
             </EntityContainer>
         </Schema>

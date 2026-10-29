@@ -1,4 +1,4 @@
-Container,Property,ODataType,Description,Property_nl,Description_nl,Reference,Source,OMS_Standard,Required,Profiles
+Group,Property,ODataType,Description,Property_nl,Description_nl,Reference,Source,OMS_Standard,Required,Profiles
 observation,id,Edm.String,The unique identifier of the observation,id,De unieke identificatie van een observatie,,OM&S,true,true,All
 observation,type,Edm.String,The type of observation,type,Het type van de observatie,,OM&S,true,true,All
 observation,phenomenonTime/begin,Edm.DateTime,The time of the start of the observation,phenomenonTime/begin,Begintijd van de observatie,,OM&S,true,true,All
@@ -9,7 +9,7 @@ observation,validTime/end,Edm.DateTime,The end of the period for which the obser
 observation,modifiedOn,Edm.DateTime,The time of the last modification,modifiedOn,De tijd van de laatste wijziging,,,,true,All
 parameter,parameter/observedParameter, Edm.String,The parameter of which the physical property is being observed/measured,parameter/geobserveerdeParameter,De parameter waarvan de fysieke eigenschap wordt geobserveerd/gemeten,,Aquo,,,All
 parameter,parameter/quantity, Edm.String,The quantity of the geo-object or parameter that is being observed/measured,parameter/grootheid,De grootheid van het geoobject of de parameter dat wordt geobserveerd/gemeten,,Aquo,,,All
-parameter,parameter/observationType, Edm.String,Description of observations based on what is observed wherein,parameter/waarnemingssoort,Beschrijving van waarnemingen gebaseerd op de vraagstelling wat waarin is waargenomen,,Aquo,,All
+parameter,parameter/observationType, Edm.String,Description of observations based on what is observed wherein,parameter/waarnemingssoort,Beschrijving van waarnemingen gebaseerd op de vraagstelling wat waarin is waargenomen,,Aquo,,,All
 parameter,parameter/asbestosFraction,Edm.String,Specifies the asbestos fraction of the parameter,parameter/asbestfractie,Specificeert de asbestfractie van de parameter,,Aquo,,,WaterQuality|Ecology|Observations
 parameter,parameter/waveFrequencyClass,Edm.String,Specifies the wave frequency class of the parameter,parameter/golffrequentieklasse,Specificeert de golffrequentieklasse van de parameter,,Aquo,,,WaterQuality|Ecology|Observations
 parameter,parameter/waveLength,Edm.String,Specifies what wave length is used for the analysis of Extinction and Chlorophyll-a,parameter/golflengte,Specificeert welke golflengte gebruikt is bij de analyse van Extinctie en chlorofyl-a,,Aquo,,,All
@@ -101,7 +101,8 @@ foi,foi/code,Edm.DateTime,Date,foi/code,Code,,,,,All
 foi,foi/organisation,Edm.String,Namespace,foi/organisations,Organisatie,,,,,All
 foi,foi/namespace,Edm.String,Namespace,foi/namespace,Naamruimte,,,,,All
 foi,foi/geometry,Edm.Geometry,Geometry,foi/geometry,Geometrie,,"",,,All
-foi,foi/identities/krw,Edm.String,Identity of the measurement location according to the KRW system,foi/identiteiten/krw,Identiteit van de meetlocatie volgens het KRW systeem,,KRW,,,All
+foi,foi/networks,Collection(Edm.String),Networks,foi/networks,(Meet)netten,,"",,,All
+foiIdentitiesForObservation,foi/identities/krw,Edm.String,Identity of the measurement location according to the KRW system,foi/identiteiten/krw,Identiteit van de meetlocatie volgens het KRW systeem,,KRW,,,All
 foiIdentitiesForObservation,foi/identities/stowa,Edm.String,Identity of the measurement location according to the STOWA system,foi/identiteiten/stowa,Identiteit van de meetlocatie volgens het STOWA systeem,,STOWA,,,All
 foiIdentitiesForObservation,foi/identities/bro,Edm.String,Identity of the measurement location according to the BRO system,foi/identiteiten/bro,Identiteit van de meetlocatie volgens het BRO systeem,,BRO,,,All
 foiIdentitiesForObservation,foi/identities/wkp,Edm.String,Identity of the measurement location according to the WKP system,foi/identiteiten/wkp,Identiteit van de meetlocatie volgens het WKP systeem,,WKP,,,All
@@ -147,15 +148,15 @@ measurementObject,description,Edm.String,Name,foi/naam,Naam,,"",,,All
 measurementObject,geometry,Edm.Geometry,Geometry,foi/geometry,Geometrie,,"",,,All
 measurementObject,organisation,Edm.String,Namespace,foi/organisations,Organisatie,,,,,All
 measurementObject,namespace,Edm.String,Namespace,foi/namespace,Naamruimte,,,,,All
-measurementObject,classifications/krwWaterType,Edm.String,Water type according to KRW,foi/classifications/krwWaterType,Watertype volgens KRW,,KRW,,,All
-measurementObject,classifications/krwMonitoringType,Edm.String,Monitoring type according to KRW,foi/classifications/krwMonitoringType,Soort monitoring volgens KRW,,KRW,,,All
-measurementObject,classifications/krwStatus,Edm.String,Status according to KRW,foi/classifications/krwStatus,Status volgens KRW,,KRW,,,All
-measurementObject,classifications/stowa,Edm.String,STOWA,foi/classifications/stowa,STOWA,,STOWA,,,All
-measurementObject,classifications/ecotope,Edm.String,Ecotope,foi/classifications/ecotope,Ecotope,,STOWA,,,All
-measurementObject,identities/krw,Edm.String,Identity of the measurement location according to the KRW system,foi/identiteiten/krw,Identiteit van de meetlocatie volgens het KRW systeem,,KRW,,,All
-measurementObject,identities/stowa,Edm.String,Identity of the measurement location according to the STOWA system,foi/identiteiten/stowa,Identiteit van de meetlocatie volgens het STOWA systeem,,STOWA,,,All
-measurementObject,identities/bro,Edm.String,Identity of the measurement location according to the BRO system,foi/identiteiten/bro,Identiteit van de meetlocatie volgens het BRO systeem,,BRO,,,All
-measurementObject,identities/wkp,Edm.String,Identity of the measurement location according to the WKP system,foi/identiteiten/wkp,Identiteit van de meetlocatie volgens het WKP systeem,,WKP,,,All
-measurementObject,identities/lmw,Edm.String,Identity of the measurement location according to the LMW system,foi/identiteiten/lmw,Identiteit van de meetlocatie volgens het LMW systeem,,LMW,,,All
-measurementObject,networks,Collection(Edm.String),Water type according to KRW,foi/classifications/krwWaterType,Watertype volgens KRW,,KRW,,,All
+measurementObject,classifications/krwWaterType,Edm.String,Water type according to KRW,classifications/krwWaterType,Watertype volgens KRW,,KRW,,,All
+measurementObject,classifications/krwMonitoringType,Edm.String,Monitoring type according to KRW,classifications/krwMonitoringType,Soort monitoring volgens KRW,,KRW,,,All
+measurementObject,classifications/krwStatus,Edm.String,Status according to KRW,classifications/krwStatus,Status volgens KRW,,KRW,,,All
+measurementObject,classifications/stowa,Edm.String,STOWA,classifications/stowa,STOWA,,STOWA,,,All
+measurementObject,classifications/ecotope,Edm.String,Ecotope,classifications/ecotope,Ecotope,,STOWA,,,All
+measurementObject,identities/krw,Edm.String,Identity of the measurement location according to the KRW system,identiteiten/krw,Identiteit van de meetlocatie volgens het KRW systeem,,KRW,,,All
+measurementObject,identities/stowa,Edm.String,Identity of the measurement location according to the STOWA system,identiteiten/stowa,Identiteit van de meetlocatie volgens het STOWA systeem,,STOWA,,,All
+measurementObject,identities/bro,Edm.String,Identity of the measurement location according to the BRO system,identiteiten/bro,Identiteit van de meetlocatie volgens het BRO systeem,,BRO,,,All
+measurementObject,identities/wkp,Edm.String,Identity of the measurement location according to the WKP system,identiteiten/wkp,Identiteit van de meetlocatie volgens het WKP systeem,,WKP,,,All
+measurementObject,identities/lmw,Edm.String,Identity of the measurement location according to the LMW system,identiteiten/lmw,Identiteit van de meetlocatie volgens het LMW systeem,,LMW,,,All
+measurementObject,networks,Collection(Edm.String),(Monitoring) networks,meetnetten,(Meet)netten,,,,,All
 

@@ -174,7 +174,6 @@ De volgende query-opties zijn binnen DD API V4 Core niet toegestaan:
 | `$expand`      | Niet toegestaan.                                                |
 | `$compute`     | Niet toegestaan.                                                |
 | `$inlinecount` | Niet toegestaan.                                                |
-| `$orderby`     | Afgeraden, tenzij een implementatie dit expliciet documenteert. |
 
 Wanneer een niet-ondersteunde query-optie wordt gebruikt, **MOET** de server een `400 Bad Request` response teruggeven.
 
@@ -622,7 +621,7 @@ Sommige OData-libraries zijn sterk gekoppeld aan een specifiek framework, object
 
 Implementaties worden aanbevolen OData-verwerking te gebruiken die:
 
-- niet vereist dat het interne opslagmodel gelijk is aan het externe OData-model;
+- niet vereist dat het interne opslagmodel gelijk is aan het externe OData-model
 - geen verplichte koppeling oplegt aan een specifieke ORM, database of frameworkconventie.
 
 Wanneer een bestaande OData-library deze eigenschappen niet biedt, wordt aanbevolen om alleen de parserfunctionaliteit te gebruiken of een eigen parser/adapterlaag te implementeren voor de DD API V4 OData-subset.

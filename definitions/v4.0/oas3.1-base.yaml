@@ -600,15 +600,23 @@ components:
 
     Edm.GeometryCollection:
       type: object
+      required:
+        - type
+        - geometries
       properties:
         type:
           type: string
-          enum:
-            - GeometryCollection
+          enum: [GeometryCollection]
         geometries:
           type: array
           items:
-            $ref: '#/components/schemas/Edm.Geometry'
+            oneOf:
+              - $ref: '#/components/schemas/Edm.GeometryPoint'
+              - $ref: '#/components/schemas/Edm.GeometryLineString'
+              - $ref: '#/components/schemas/Edm.GeometryPolygon'
+              - $ref: '#/components/schemas/Edm.GeometryMultiPoint'
+              - $ref: '#/components/schemas/Edm.GeometryMultiLineString'
+              - $ref: '#/components/schemas/Edm.GeometryMultiPolygon'
 
     DigitaleDelta.ODataErrors.ODataError:
       required:

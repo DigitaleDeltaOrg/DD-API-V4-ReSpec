@@ -1,5 +1,15 @@
-- name: Build with Jekyll
-  uses: actions/jekyll-build-pages@v1
-  with:
-    source: ./
-    destination: ./_site
+name: Build with Jekyll
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site

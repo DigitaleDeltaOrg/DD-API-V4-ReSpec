@@ -76,11 +76,10 @@ parameter,parameter/lengthClassInMm,Edm.String,"Length class in mm",parameter/le
 parameter,parameter/widthClass,Edm.String,Width class,parameter/breedteklasse,"Breedteklasse",,Aquo,,Ecology
 parameter,parameter/energySource,Edm.String,Energy source,parameter/energiebron,"Energiebron",,Aquo,,Ecology
 parameter,parameter/samplingType,Edm.String,"Type of sampling", parameter/bemonsteringstype,"Bemonsteringstype",,Aquo,,Ecology
-parameter,parameter/samplingPosition,Edm.String,"Position of sampling (in-situ/ex-situ)",parameter/bemonsteringspositie,"Bemonsteringspositie (bijv. in-situ/ex-situ)",,Aquo,,Ecology 
-parameter,parameter/reportingBase,Edm.String,"Reported as another parameter",parameter/rapportageBasis,"Uitgedrukt in/als een andere stof (hoedanigheid/equivalent)",,Aquo,,Ecology|WaterQuality|WaterQuantity
+parameter,parameter/observationLocationType,Edm.String,"Position of sampling (in-situ/ex-situ,remote-sensing)",parameter/observatieLocatieTYpe,"Bemonsteringspositie (bijv. in-situ/ex-situ/remote-sensing)",,Aquo,,All 
 metaData,metadata/order,Edm.String,Order number/code,metadata/ordernummer,Opdrachtnummer/code,,AquaDesk,,Ecology|WaterQuality|WaterQuantity
 metaData,metadata/status,Edm.String,Status,metadata/status,Status van de observatie,,Aquo,,All
-metaData,metadata/action,Edm.String,"Action to be taken: none, replace, remove",metadata/actie, "Te ondernemen actie: geen, vervangen, verwijderen",,Aquo,,Ecology|WaterQuality|WaterQuantity
+metaData,metadata/action,Edm.String,"Action to be taken: add, replace, remove",metadata/actie, "Te ondernemen actie: toevoegen, vervangen, verwijderen",,Aquo,,Ecology|WaterQuality|WaterQuantity
 metaData,metadata/observationComment,Edm.String,Observation comment,metadata/observatieopmerking,Opmerking bij de observatie, ,AquaDesk,,Ecology|WaterQuality|WaterQuantity
 metaData,metadata/collectionComment,Edm.String,Collection comment,metadata/collectieopmerking,Opmerking bij de collectie (monster),,AquaDesk,,Ecology|WaterQuality|WaterQuantity
 metaData,metadata/orderNumber,Edm.String,Order number,metadata/opdrachtnummer,opdrachtnummer,,AquaDesk,,Ecology|WaterQuality|WaterQuantity

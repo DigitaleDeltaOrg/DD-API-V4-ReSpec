@@ -8,6 +8,7 @@ observation,validTime/begin,Edm.DateTime,The start of the period for which the o
 observation,validTime/end,Edm.DateTime,The end of the period for which the observation is valid,validTime/end,Eindtijd van de geldigheid van het resultaat,,OM&S,true,All
 observation,modifiedOn,Edm.DateTime,The time of the last modification,modifiedOn,De tijd van de laatste wijziging,,,,All
 parameter,parameter/observedParameter, Edm.String,The parameter of which the physical property is being observed/measured,parameter/geobserveerdeParameter,De parameter waarvan de fysieke eigenschap wordt geobserveerd/gemeten,,Aquo,,All
+parameter,parameter/observedTaxonName, Edm.String,The biotaxon of which the physical property is being observed/measured,parameter/geobserveerdeTaxonNaam,De biotaxon waarvan de fysieke eigenschap wordt geobserveerd/gemeten,,Aquo,,All
 parameter,parameter/quantity, Edm.String,The quantity of the geo-object or parameter that is being observed/measured,parameter/grootheid,De grootheid van het geoobject of de parameter dat wordt geobserveerd/gemeten,,Aquo,,All
 parameter,parameter/observationType, Edm.String,Description of observations based on what is observed wherein,parameter/waarnemingssoort,Beschrijving van waarnemingen gebaseerd op de vraagstelling wat waarin is waargenomen,,Aquo,,All
 parameter,parameter/asbestosFraction,Edm.String,Specifies the asbestos fraction of the parameter,parameter/asbestfractie,Specificeert de asbestfractie van de parameter,,Aquo,,WaterQuality|Ecology|Observations

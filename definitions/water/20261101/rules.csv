@@ -1,6 +1,6 @@
 RuleId,RuleType,Properties,Target,Condition,Message,Message_nl,ForProfiles
 id.required,required,id,,,Property id is required.,Eigenschap id is verplicht.,All
-type.exactlyOneOf,exactlyOneOf,type,Measure|Truth|Count|Category|Coverage,,"Property type must be one of 'Measure', 'Truth', 'Count', 'Vocab', 'Coverage'.","Eigenschap type moet een van 'Measure', 'Truth', 'Count', 'Vocab', 'Coverage' zijn.",All
+type.exactlyOneOf,exactlyOneOf,type,Measure|Truth|Count|Category|Coverage,,"Property type must be one of 'Measure', 'Truth', 'Count', 'Category', 'Coverage'.","Eigenschap type moet een van 'Measure', 'Truth', 'Count', 'Category', 'Coverage' zijn.",All
 parameter_quantity.requiredWhen.typeNeCategory,requiredWhen,parameter/quantity,,observation.type ne 'category',Property parameter/quantity is required when type not equal to 'category'.,Eigenschap parameter/quantity is verplicht wanneer type niet 'category' is.,All
 phenomenonTime_begin.required,required,phenomenonTime/begin,,,Property phenomenonTime/begin is required.,Eigenschap phenomenonTime/begin is verplicht.,All
 phenomenonTime_begin.requires.end,requires,phenomenonTime/begin,phenomenonTime/end,,Property phenomenonTime/end is required when phenomenonTime/begin is present.,Eigenschap phenomenonTime/end is verplicht wanneer phenomenonTime/begin is opgenomen.,All

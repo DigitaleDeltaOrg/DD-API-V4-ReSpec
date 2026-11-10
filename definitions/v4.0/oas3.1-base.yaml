@@ -404,38 +404,44 @@ components:
         id:
           type: string
           description: Unique ID of the result.
-        truth:
-          type: boolean
-          nullable: true
-          description: Truth observation. Can only result in true or false.
-        count:
-          type: integer
-          format: int64
-          nullable: true
-          description: Count observation. No unit specified and the value can only be an integer value.
-        measure:
-          anyOf:
-            - $ref: '#/components/schemas/DigitaleDelta.Measure'
-            - type: object
+      oneOf:
+        - required: [ truth ]
+          properties:
+            truth:
+              type: boolean
               nullable: true
-          description: Result is expressed in a unit and a value.
-        category:
-          anyOf:
-            - $ref: '#/components/schemas/DigitaleDelta.Category'
-            - type: object
+              description: Truth observation. Can only result in true or false.
+        - required: [ count ]
+          properties:
+            count:
+              type: integer
+              format: int64
               nullable: true
-          description: Result is expressed as a category.
-        coverageJSON:
-          anyOf:
-            - $ref: '#/components/schemas/DigitaleDelta.CoverageJSON'
-            - type: object
-              nullable: true
-          description: Result is expressed as CoverageJSON.
-        retracted:
-          anyOf:
-            - $ref: '#/components/schemas/DigitaleDelta.Retracted'
-            - type: object
-              nullable: true
+              description: Count observation. No unit specified and the value can only be an integer value.
+        - required: [measure]
+          properties:
+            measure:
+              $ref: '#/components/schemas/DigitaleDelta.Measure'
+              description: Result is expressed in a unit and a value.
+        - required: [category]
+          properties:
+            category:
+              $ref: '#/components/schemas/DigitaleDelta.Category'
+              description: Result is expressed as a category.
+        - required: [coverageJSON]
+          properties:
+            coverageJSON:
+              anyOf:
+                - type: object
+                  nullable: true
+              description: Result is expressed as CoverageJSON.
+        - required: [retracted]
+          properties:
+            retracted:
+              anyOf:
+                - $ref: '#/components/schemas/DigitaleDelta.Retracted'
+                - type: object
+                  nullable: true
     
     DigitaleDelta.Measure:
       title: Measure

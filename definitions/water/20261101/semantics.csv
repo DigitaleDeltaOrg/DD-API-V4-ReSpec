@@ -43,7 +43,7 @@ parameter,parameter/sizeClass,Edm.String,Size class,parameter/lengteklasse,Lengt
 parameter,parameter/habitat,Edm.String,Habitat,parameter/habitat,Habitat,,Aquo,,Ecology|WaterQuality
 parameter,parameter/projectMethod,Edm.String,Project method,parameter/projectmethode,Projectmethode,,Aquo,,Ecology|WaterQuality|WaterQuantity
 parameter,parameter/organ,Edm.String,Organ,parameter/orgaan,Orgaan,,Aquo,,Ecology|WaterQuality|WaterQuantity
-parameter,parameter/organism,Edm.String,The biotaxon of which the physical property is being observed/measured,parameter/organisme,Het biotaxon waarvan de fysieke eigenschap gemeten/geobserveerd is,,Aquo,,Ecology|WaterQuality|WaterQuantity
+parameter,parameter/organism,Edm.String,"A biologisch property of the sample that specifies what organism is sampled",parameter/organisme,"Een biologisch kenmerk van het monster die specificeert welk organisme bemonsterd is",,Aquo,,Ecology|WaterQuality|WaterQuantity
 parameter,parameter/analysisMethod,Edm.String,Analysis method,parameter/analysemethode,Analysemethode,,Aquo,,Ecology|WaterQuality|WaterQuantity
 parameter,parameter/validatingOrganisation,Edm.String,Checking organisation,parameter/validerendeOrganisatie,Controlerende instantie,,Aquo,,Ecology|WaterQuality|WaterQuantity
 parameter,parameter/samplingOrganisation,Edm.String,Sampling organisation,parameter/bemonsterendeOrganisatie,Bemonsterende instantie,,Aquo,,Ecology|WaterQuality|WaterQuantity
@@ -98,6 +98,8 @@ metaData,metadata/detectionThresholdType,Edm.String,Detection threshold type, me
 metaData,metadata/detectionThreshold,Ecm.Double,Detection threshold, metadata/Detectiegrenswaarde, De grenswaarde van detectie,,Aquo,,Ecology|WaterQuality|WaterQuantity
 metaData,metadata/detectionThresholdLimitSymbol,Edm.String,"Detection threshold limit symbol", metadata/detectiegrensLimietsymbool, "Het limiet symbool dat van toepassing is op de detectiegrenswaarde",,Aquo,,Ecology|WaterQuality|WaterQuantity
 metadata,metadata/samplingGeometry,Edm.Geometry,"The geometrie wherein sampling is performed", metadata/bemonsteringsgeometrie,"De geometrie waarover de bemonstering is uitgevoerd",,Aquo,,Ecology|WaterQuality|WaterQuantity
+metadata,metadata/sampleRetrievalTime,Edm.DateTime,"Date/time on which the collected sample was retrieved",metadata/monsterOphaaltijd,"Datum/tijd waarop het reeds genomen monster opgehaald is",,Aquo,,Ecology|WaterQuality|WaterQuantity 
+metadata,metadata/observationLocalId,Edm.String,"Local id of the observation (i.e. `meetwaarde.lokaalid` in IM Metingen-format",metadata/observatieLokaalId,"Lokale id van de observatie, b.v. voor IM Metingen: Meetwaarde.LokaalId",,Aquo,,Ecology|WaterQuality|WaterQuantity
 foi,foi/id,Edm.String,Identifier of the Feature of Interest,foi/id,Identificatie van de Feature of Interest,,,,All
 foi,foi/code,Edm.DateTime,Code of the Feature of Interest,foi/code,Code van de Feature of Interest,,,,All
 foi,foi/organisation,Edm.String,Namespace of the Feature of Interest,foi/organisations,Organisatie van de Feature of Interest,,,,All

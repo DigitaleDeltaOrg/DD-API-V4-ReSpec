@@ -1,6 +1,6 @@
 // Minimale ReSpec configuratie met localBiblio
 var respecConfig = {
-    specStatus: "wv",        // Werkversie, kan ook "ED", "WD", etc.
+    specStatus: "cv",        // Werkversie, kan ook "ED", "WD", etc.
     shortName: "dd-api-v4",
     pubDomain: "api",
     title: "Digitale Delta API v4 Specificatie",
@@ -18,8 +18,14 @@ var respecConfig = {
     typeText: "DD API V4 specificatie",
     statusText: "Werkversie",
     language: "nl",
-    editors: [ { name: "Jeroen Gerrits", company: "Vortech", companyURL: "https://vortech.nl" } ],
-    authors: [ { name: "Geri Wolters", company: "EcoSys", companyURL: "https://ecosys.nl" } ],
+    editors: [
+        { name: "Yoerick Lankhof", company: "Informatiehuis Water", companyURL: "https://ihw.nl" },
+        { name: "Sela Tahanay", company: "Informatiehuis Water", companyURL: "https://ihw.nl" },
+        { name: "Dolf Daal", company: "Informatiehuis Water", companyURL: "https://ihw.nl" }
+    ],
+    authors: [ 
+        { name: "Geri Wolters", company: "EcoSys", companyURL: "https://ecosys.nl" }
+    ],
     logos: [
         {
             src: "https://digitaledeltaorg.github.io/DigitalDeltaLogoOptimized.svg",
